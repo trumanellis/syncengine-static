@@ -36,11 +36,6 @@
             height: 200px;
         }
 
-        header img {
-            max-height: 100px;
-            display: none; /* Hide the logo image */
-        }
-
         .title-container {
             text-align: center;
             padding: 20px 0;
@@ -119,7 +114,6 @@
         #peerjs-container {
             margin: 50px auto;
             text-align: center;
-            display: none; /* Hide the PeerJS section */
         }
 
         #peer-id {
@@ -140,25 +134,39 @@
         <p>by Temples of Refuge</p>
     </div>
 
-    </header>
-
     <section class="hero">
         <h2>A New Era of Gratitude-Based Economy</h2>
         <p>The Synchronicity Engine is a peer-to-peer network that fosters a sacred gifting economy through Gratitude. Join us in co-creating a community of abundance, cooperation, and collective wisdom.</p>
     </section>
 
-    <section class="section">
+    <section class="section" id="how-it-works">
         <h2>How It Works</h2>
-        <p>Members track their acts of service through a community to-do list, earning Gratitude points. These points represent contributions to the community, guiding voting on important decisions.</p>
+        <p>The Synchronicity Engine leverages Gratitude as a form of currency. Members earn Gratitude points through their contributions to the community, which can then be used to participate in decision-making and exchanges of services and offerings. This system balances personal well-being, service to others, and contributions to the collective Commons.</p>
     </section>
 
-    <div id="peerjs-container">
-        <h2>Connect with PeerJS</h2>
-        <p id="peer-id">Your Peer ID: <span></span></p>
+    <section class="section" id="service-types">
+        <h2>Three Types of Service</h2>
+        <p>The Synchronicity Engine rewards three distinct forms of service:</p>
+        <ul>
+            <li><strong>Service to Self:</strong> Take care of your personal health and spiritual well-being, and earn Gratitude points through practices like meditation, exercise, and reflection.</li>
+            <li><strong>Service to Others:</strong> Offer your time, skills, or resources to another community member. This can range from sharing knowledge to offering help with a specific task.</li>
+            <li><strong>Service to the Commons:</strong> Contribute to the collective pool, whether through donations, land stewardship, or creating sacred art, to benefit the whole community.</li>
+        </ul>
+    </section>
+
+    <section class="section" id="temples-of-refuge">
+        <h2>Temples of Refuge</h2>
+        <p>Each community member can establish or join a Temple of Refuge—sacred spaces, either land-based or home-based, where Gratitude and gifts are exchanged regularly. These Temples act as hubs for small groups (up to 144 members), where members can gather to offer their gifts, participate in sacred ceremonies, and create a deep sense of community.</p>
+    </section>
+
+    <section class="section" id="peerjs-container">
+        <h2>Peer-to-Peer Connectivity with PeerJS</h2>
+        <p>The Synchronicity Engine also supports direct, peer-to-peer connections, allowing members to exchange Gratitude and communicate in real-time.</p>
+        <p>Your Peer ID: <span id="peer-id">Loading...</span></p>
         <input type="text" id="connect-id" placeholder="Enter Peer ID to connect" />
         <button onclick="connectToPeer()">Connect</button>
         <p id="status"></p>
-    </div>
+    </section>
 
     <footer>
         <p>© 2024 Synchronicity Engine by Temples of Refuge | <a href="#">Contact Us</a></p>
@@ -172,7 +180,7 @@
         
         // Display the Peer ID
         peer.on('open', id => {
-            document.querySelector('#peer-id span').textContent = id;
+            document.querySelector('#peer-id').textContent = id;
         });
 
         // Function to connect to another peer
