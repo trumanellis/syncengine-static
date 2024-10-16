@@ -108,11 +108,23 @@ header nav a {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
-footer {
-    padding: 20px;
+.footer {
+    background-color: #000;
+    color: #fff;
     text-align: center;
-    background-color: #222;
+    padding: 20px;
+}
+
+.footer img {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+footer a, header nav a, .content-section h2 a {
     color: #ffffff;
+    text-decoration: none;
 }
 
 footer a, header nav a, .content-section h2 a {
