@@ -47,7 +47,10 @@
 
 <section class="content-section">
     <h2>Organizational Structure</h2>
-    <img src="./diagrams/TemplesOrganization.png" alt="Excalidraw Drawing" style="width: 100%; height: 500px; border: none;" allowfullscreen>
+    <img src="./diagrams/TemplesOrganization.png" alt="Excalidraw Drawing" style="width: 100%; height: 500px; border: none; cursor: pointer;" onclick="openLightbox();">
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="./diagrams/TemplesOrganization.png" alt="Excalidraw Drawing">
+    </div>
     <!-- <img src="./diagrams/TemplesOrganization.svg" style="width: 100%; height: 500px; border: none;" allowfullscreen></img> -->
 </section>
 
@@ -93,5 +96,14 @@
     <p>© 2024 Synchronicity Engine by Temples of Refuge | <a href="contact.html" style="color: #fff;">Contact Us</a></p>
 </footer>
 
+<script>
+    function openLightbox() {
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+</script>
 </body>
 </html>
