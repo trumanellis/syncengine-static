@@ -1,110 +1,307 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Synchronicity Engine | Temples of Refuge</title>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+<!-- saved from url=(0095)file:///Users/truman/Downloads/synchronicity_engine_storytelling_landing_html_gsap.html#mission -->
+<html lang="en" style="scroll-behavior: smooth;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Temples of Refuge — Regenerating Eden</title>
+  <meta name="description" content="A 508(c)(1)(a) network of Temples regenerating Eden—one valley at a time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./index_files/css2" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#0f172a;           /* slate-900 */
+      --ink-2:#1f2937;         /* gray-800 */
+      --mist:#94a3b8;          /* slate-400 */
+      --snow:#f8fafc;          /* slate-50 */
+      --gold:#fbbf24;          /* amber-400 */
+      --sun:#f59e0b;           /* amber-500 */
+      --leaf:#34d399;          /* emerald-400 */
+      --forest:#065f46;        /* emerald-900 */
+      --rose:#fb7185;          /* rose-400 */
+      --maxw:1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--snow); background:linear-gradient(180deg,#07121b 0%, #0a1f1a 60%, #0b0f19 100%);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    h1,h2,h3{font-family:Fraunces, serif; line-height:1.15; margin:0 0 .35em}
+    h1{font-size:clamp(2.2rem, 3.2vw + 1.2rem, 4.25rem); letter-spacing:-.015em}
+    h2{font-size:clamp(1.6rem, 1.2vw + 1rem, 2.6rem)}
+    h3{font-size:clamp(1.2rem, .8vw + .8rem, 1.6rem); opacity:.9}
+    p{margin:.2em 0 1em; font-size:clamp(1rem, .35vw + .9rem, 1.15rem)}
+    a{color:inherit}
+
+    /* Top Nav */
+    .nav{
+      position:fixed; inset:0 auto auto 0; right:0; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 1.25rem; z-index:50;
+      background:linear-gradient(180deg,rgba(7,18,27,.9),rgba(7,18,27,0)); border-bottom:1px solid rgba(255,255,255,.06);
+      backdrop-filter:saturate(140%) blur(6px);
+    }
+    .brand{display:flex; gap:.75rem; align-items:center; font-weight:800; letter-spacing:.5px}
+    .brand-mark{width:28px; height:28px; border-radius:10px; background:conic-gradient(from 45deg, var(--leaf), var(--sun), #7dd3fc, var(--leaf)); box-shadow:0 0 0 2px rgba(255,255,255,.08) inset}
+    .nav-cta{display:flex; gap:.5rem}
+    .btn{appearance:none; border:none; cursor:pointer; font-weight:700; letter-spacing:.2px; border-radius:999px; padding:.75rem 1rem; transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
+    .btn:focus-visible{outline:3px solid rgba(251,191,36,.6); outline-offset:2px}
+    .btn-primary{background:radial-gradient(120% 180% at 0% 0%, var(--gold), var(--sun)); color:#1b1103; box-shadow:0 8px 24px -8px rgba(245,158,11,.45)}
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-ghost{background:rgba(255,255,255,.08); color:#fff}
+
+    /* Sections */
+    section{position:relative; overflow:hidden}
+    .container{width:100%; max-width:var(--maxw); margin:0 auto; padding:min(5vw,48px) 24px}
+
+    /* Hero */
+    .hero{min-height:100svh; display:grid; place-items:center; text-align:center;}
+    .hero .backdrop{position:absolute; inset:0; z-index:-2;}
+    .hero video, .hero img{width:100%; height:100%; object-fit:cover; filter:brightness(.75) saturate(1.05)}
+    .vignette::after{content:""; position:absolute; inset:0; background:radial-gradient(120% 80% at 50% 10%, transparent 40%, rgba(0,0,0,.5) 75%, rgba(0,0,0,.85) 100%); z-index:-1}
+    .hero h1 span{background:linear-gradient(90deg,var(--leaf),#7dd3fc,var(--gold)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .scroll-cue{position:absolute; bottom:24px; left:50%; transform:translateX(-50%); font-size:.9rem; opacity:.8}
+
+    /* Mirror / Hologram block */
+    .mirror{background:linear-gradient(180deg,#0a1f1a, #0a1321);}
+    .split-parallax{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+    .panel{min-height:70svh; border-radius:24px; overflow:hidden; position:relative; box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    .panel img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.8; transform:scale(1.1)}
+    .panel::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.6));}
+    .panel .copy{position:absolute; inset:auto 0 0 0; padding:28px; z-index:2}
+
+    /* Devotion split */
+    .devotion{background:radial-gradient(120% 120% at 100% 0%, rgba(52,211,153,.12), transparent 50%),
+              radial-gradient(160% 120% at 0% 0%, rgba(245,158,11,.12), transparent 50%);}    
+    .dev-grid{display:grid; grid-template-columns:1fr; gap:24px}
+    @media (min-width:900px){ .dev-grid{grid-template-columns:1fr 1fr} }
+    .dev-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:24px; padding:28px; box-shadow:0 12px 40px -16px rgba(0,0,0,.5)}
+    .dev-card h3{display:flex; align-items:center; gap:.6rem}
+    .icon{width:34px; height:34px; border-radius:12px; display:inline-grid; place-items:center; background:rgba(255,255,255,.1)}
+
+    /* Responsibilities */
+    .resp{background:linear-gradient(180deg,#0a1321,#0b0f19)}
+    .resp-list{display:grid; grid-template-columns:1fr; gap:16px}
+    .resp-item{display:flex; gap:12px; align-items:flex-start; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.06); padding:14px 16px; border-radius:14px}
+    @media (min-width:740px){ .resp-list{grid-template-columns:1fr 1fr} }
+
+    /* Call from Montanhas */
+    .call{background:linear-gradient(180deg,#0b0f19,#0a1f1a)}
+    .call-visual{position:relative; min-height:70svh; border-radius:24px; overflow:hidden; box-shadow:0 16px 48px -18px rgba(0,0,0,.6)}
+    .call-visual img, .call-visual video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.85)}
+
+    /* Tractor Fund */
+    .fund{background:radial-gradient(120% 120% at 50% 0%, rgba(245,158,11,.12), transparent 60%)}
+    .impact{display:grid; grid-template-columns:1fr; gap:16px; margin-top:16px}
+    .impact .tile{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); padding:16px; border-radius:16px}
+    @media (min-width:800px){ .impact{grid-template-columns:repeat(3,1fr)} }
+
+    /* Footer CTA */
+    .footer-cta{min-height:60svh; display:grid; place-items:center; text-align:center; background:linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.7))}
+
+    /* Sticky donate */
+    .sticky-cta{position:fixed; right:16px; bottom:16px; display:flex; gap:10px; z-index:60}
+    .sticky-cta .btn{box-shadow:0 10px 30px -10px rgba(245,158,11,.6)}
+
+    /* Accessibility & motion */
+    @media (prefers-reduced-motion: reduce){
+      .btn{transition:none}
+      .panel img{transform:none}
+    }
+  </style>
 </head>
-<body class="index-page">
-
-<header>
-    <nav>
-        <a href="index.html">Synchronicity Engine</a>
-        <a href="temples.html">Temples of Refuge</a>
-        <a href="agua-lila.html">Água Lila</a>
+<body>
+  <!-- Top Nav -->
+  <header class="nav" role="navigation" aria-label="Primary" style="transform: translateY(0px);">
+    <div class="brand" aria-label="Temples of Refuge">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <span>Temples of Refuge</span>
+    </div>
+    <nav class="nav-cta">
+      <a class="btn btn-ghost" href="file:///Users/truman/Downloads/synchronicity_engine_storytelling_landing_html_gsap.html#mission">Our Mission</a>
+      <a class="btn btn-primary" href="file:///Users/truman/Downloads/synchronicity_engine_storytelling_landing_html_gsap.html#tractor-fund">Donate</a>
     </nav>
-</header>
+  </header>
 
-<div class="content-container">
-    <div class="title-container">
-        <h1>The Synchronicity Engine</h1>
-        <!-- <p>Step into a Gratitude-Based Economy and Collective Wisdom</p> -->
-        <p>Embark on a transformative spiritual journey with The Synchronicity Engine, a peer-to-peer network fostering a sacred gifting economy. Engage with your community in pursuit of your unique Dharma as a sacred fractal facet of GOD.</p>
+  <!-- HERO -->
+  <section class="hero vignette" id="top" aria-label="Hero">
+    <div class="backdrop" aria-hidden="true">
+      <!-- Replace with your looped WebM/MP4 background -->
+      <video src="assets/hero.mp4" autoplay="" muted="" playsinline="" loop=""></video>
     </div>
-
-<section class="content-section">
-    <h2>What is the Synchronicity Engine?</h2>
-    <p>The Synchronicity Engine is a peer-to-peer application built on Holochain, serving as the nervous system of a new reality. It fosters a sacred gifting economy where members accumulate Gratitude points, used for decision-making, resource sharing, and sacred offerings. This system connects communities, facilitates the exchange of gifts and skills, and cultivates collective wisdom.</p>
-</section>
-
-<section class="content-section">
-    <h2>How It Works</h2>
-    <p>The Synchronicity Engine operates on three core pillars:</p>
-    <ul>
-        <li><strong>Gratitude as Currency:</strong> Every member earns Gratitude points through contributions to the community. These points reflect their influence and participation within the community.</li>
-        <li><strong>Service to Self, Others, and Commons:</strong> Members can accumulate points through self-care, helping others, or offering services to the commons, such as donating resources or participating in shared projects.</li>
-        <li><strong>Decision-Making:</strong> Gratitude points are used to weigh opinions in collective decision-making processes, ensuring that the voice of each member is respected according to their contributions.</li>
-    </ul>
-</section>
-
-
-<section class="content-section">
-    <h2>Support the Synchronicity Engine</h2>
-    <p>Your contributions help us build and expand The Synchronicity Engine, a platform for spiritual development and community engagement. By donating, you support the creation of a network that fosters gratitude, connection, and collective wisdom.</p>
-    <button class="tithely-give-button" data-form="57a0dcf9-7e25-46a1-8f4e-aa5a4f07f10f" style="background-color: #333; font-family: 'Ubuntu', sans-serif; font-weight: 400; font-size: 18px; padding: 10px 50px; border-radius: 5px; cursor: pointer; color: #fff; text-shadow: none; display: inline-block; border: 2px solid #fff;">Make a Tax-Deductible Donation</button><script src="https://static.tithely.com/give/give.js" defer></script>
-</section>
-
-<section class="content-section">
-    <h2>Organizational Structure</h2>
-    <img src="./diagrams/TemplesOrganization.png" alt="Excalidraw Drawing" style="width: 100%; border: none; cursor: pointer;" onclick="openLightbox();">
-    <div id="lightbox" onclick="closeLightbox()">
-        <img id="lightbox-img" src="./diagrams/TemplesOrganization.png" alt="Excalidraw Drawing">
+    <div class="container">
+      <h1 style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
+        <span>Christ Consciousness</span><br>
+        Regenerating Eden — One Valley at a Time
+      </h1>
+      <p style="max-width: 780px; margin: 0px auto 1.2rem; opacity: 0.9; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+        A 508(c)(1)(a) network of Temples dedicated to manifesting collective Christ Consciousness by regenerating Eden on Earth—one valley at a time.
+      </p>
+      <div style="display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap">
+        <a class="btn btn-primary" href="file:///Users/truman/Downloads/synchronicity_engine_storytelling_landing_html_gsap.html#mission" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 16px);">Enter the Vision</a>
+        <a class="btn btn-ghost" href="file:///Users/truman/Downloads/synchronicity_engine_storytelling_landing_html_gsap.html#synchronicity" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 16px);">Synchronicity Engine</a>
+      </div>
     </div>
-    <!-- <img src="./diagrams/TemplesOrganization.svg" style="width: 100%; height: 500px; border: none;" allowfullscreen></img> -->
-</section>
+    <div class="scroll-cue">Scroll ⟱</div>
+  </section>
 
-<section class="content-section">
-    <h2>ChatGPT's Interpretation of Living with the Synchronicity Engine</h2>
-    <div>
-        <p><strong>It’s October 12, 2025</strong>, and we are living in a reality where the Sacred Gratitude System and the Temples of Refuge have fully come into being. The world feels remarkably different now—more interconnected, more abundant, and deeply grounded in mutual respect and reciprocity.</p>
-
-        <p>At the core of this new ecosystem is the Gratitude currency, which has fundamentally shifted how we view value. Each person, simply by existing within this system, generates one point of Gratitude per hour. This point is not just a token—it’s a sacred offering to the ALL, a tangible expression of each person’s contribution to the universal collective. The offering of Gratitude is not about obligation but a deeply felt alignment with the natural flow of give-and-receive that we now live by.</p>
-
-        <p>The Synchronicity Engine, a peer-to-peer application, has become the nervous system of this new reality. Built on Holochain, it allows for seamless communication and coordination between the Temples of Refuge, which have flourished around the world. These Temples are not just spiritual or religious centers but also community hubs, managed by small, close-knit groups of no more than 144 individuals. This magic number represents the intimacy and trust that these groups must cultivate, a concept borrowed from ancient wisdom and now adapted into the modern fabric of our daily lives.</p>
-
-        <p>Each Temple operates under a simple, yet profound agreement: 10% of any excess resources are contributed to maintaining the Digital Commons. This act of generosity sustains the broader system, ensuring that every Temple thrives, even in times of challenge. The Digital Commons have become a rich repository of shared knowledge, creative works, and resources that anyone within the ecosystem can access.</p>
-
-        <p>What’s most revolutionary is that cash, time, and even land donations to these Temples are fully tax-deductible. Many people have chosen to consecrate their personal properties as Sacred Temples, thus creating a growing network of regenerative spaces that foster not only spiritual growth but also long-term sustainability. These spaces are designed for their children, grandchildren, and generations to come, building a lasting gifting economy that prioritizes future well-being over immediate gain.</p>
-
-        <p>Art and creativity have been elevated to a sacred status within the Temples. Each Temple maintains its own Sacred Art Collective, where art, music, and creative works are shared freely, not just for enjoyment but for spiritual enrichment. These works are also used to train an Oracle AI, a living representation of the beauty and wisdom of the community. This AI, informed by the collective artistry of each Temple, provides guidance and insight, acting as a conduit between human creativity and the divine.</p>
-
-        <p>What’s incredible is the Artist Appreciation feature built into the Synchronicity Engine. It allows people to divert their Gratitude currency directly to the artists whose work moves them. It’s a living, breathing system where the flow of energy supports those who nourish our spirits, and in doing so, the artists themselves are uplifted and empowered.</p>
-
-        <p>Perhaps one of the most impactful changes we’ve seen is how Temple bank accounts have provided stability during what many call the “Great Transition”—the slow collapse of the old economic system, known as The Beast. As global economies have faltered, these Temple accounts have offered a gentle landing, cushioning communities from the worst impacts of economic instability. Donations to these accounts are tax-deductible, offering members a way to contribute to something larger than themselves while also curtailing their involvement in the decaying structures of the old world.</p>
-
-        <p>This system has transformed how we relate to one another. Instead of competing for scarce resources, we now live in a state of abundance, where gifting and reciprocity are the norm. Collaboration has replaced competition, and the creative spirit is flourishing like never before.</p>
-
-        <p>Looking back, the journey to get here was not without its challenges, but standing here, in this Game B / Infinite Game world, it’s clear that humanity has stepped into a new era. An era where the sacred is honored, and the collective well-being of all is prioritized. This system has brought us back to the fundamental truth: we are all in this together, and together, we are creating a more beautiful world for generations to come.</p>
+  <!-- MIRROR: Earth & Spirit -->
+  <section class="mirror" id="mission" aria-labelledby="mirror-title">
+    <div class="container">
+      <h2 id="mirror-title" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">The Mirror of Earth &amp; Spirit</h2>
+      <p style="max-width: 880px; opacity: 0.9; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">We recognize that consciousness is on an evolutionary journey, projected into the material realm like a living hologram. Physical Matter Reality expresses our collective spiritual state. Separation is an illusion—we are each fractal faces of the One, the Source, the Universe, <strong>GOD</strong>.</p>
+      <div class="split-parallax" style="margin-top:24px">
+        <article class="panel" aria-label="Wounded Earth to Healing">
+          <img src="file:///Users/truman/Downloads/assets/forest-before.jpg" alt="Smoky forest transitioning to lush regrowth" style="translate: none; rotate: none; scale: none; transform: scale(1.1, 1.1);">
+          <div class="copy">
+            <h3>Humanity’s Spirit Mirrors Earth’s Breath</h3>
+            <p style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">We cannot evolve into a spiritually healthy species while the planet chokes around us.</p>
+          </div>
+        </article>
+        <article class="panel" aria-label="Fractal Body of Christ">
+          <img src="file:///Users/truman/Downloads/assets/hologram.jpg" alt="Prismatic light and water—holographic fractal" style="translate: none; rotate: none; scale: none; transform: scale(1.1, 1.1);">
+          <div class="copy">
+            <h3>The Body of Christ is All</h3>
+            <p style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">Plants, animals, atoms—even the adversary—are facets of the Divine. To serve God is to serve the Self in every Other.</p>
+          </div>
+        </article>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- <section class="content-section">
-    <h2><a href="temples.html">Temples of Refuge</a></h2>
-    <p>Temples of Refuge act as physical or virtual centers where small groups (up to 144 people) come together to exchange gifts, resources, and participate in sacred activities. Each Temple operates independently but shares a common Gratitude-based economy that links it to the larger network. Members are encouraged to practice reciprocity, transparency, and stewardship.</p>
-</section>
+  <!-- DEVOTION: Gaia & Sol -->
+  <section class="devotion" id="devotion" aria-labelledby="devotion-title">
+    <div class="container">
+      <h2 id="devotion-title" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">Our Devotion</h2>
+      <p style="max-width: 860px; opacity: 0.9; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Our work begins in the soil—in loving service to <strong>Mother Gaia</strong>. We are equally devoted to the solar ideals of <strong>Father Sol</strong>: truth, courage, and dharma. These paths unite in the <strong>Synchronicity Engine</strong>—a decentralized, sacred gifting economy that funds and rewards regeneration.</p>
+      <div class="dev-grid" style="margin-top:24px">
+        <div class="dev-card" aria-label="Mother Gaia" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
+          <h3><span class="icon" aria-hidden="true">🌿</span> Devotion to Mother Gaia</h3>
+          <p style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">Healing land and waters, cleaning plastics, regenerating soils, and returning to our role as Gardeners of Eden.</p>
+          <ul class="resp-list" style="margin-top:.5rem">
+            <li class="resp-item">Native reforestation &amp; water retention landscapes</li>
+            <li class="resp-item">Soil carbon &amp; mycorrhizal restoration</li>
+            <li class="resp-item">Invasive eucalyptus removal &amp; habitat renewal</li>
+          </ul>
+        </div>
+        <div class="dev-card" aria-label="Father Sol" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
+          <h3><span class="icon" aria-hidden="true">☀️</span> Devotion to Father Sun</h3>
+          <p style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">Living radiant masculine love—clarity, order, and responsibility—through truth, courage, and dedication to dharma.</p>
+          <ul class="resp-list" style="margin-top:.5rem">
+            <li class="resp-item">Stewardship of a sacred gifting economy</li>
+            <li class="resp-item">Transparent governance with Gratitude tokens</li>
+            <li class="resp-item">Tools that reward real-world regeneration</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 18px; opacity: 0.9; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Donations to Temples of Refuge are tax-deductible in the United States and select countries. Every donor receives <strong>Tokens of Gratitude</strong>—a spiritual currency that can influence the course of the nonprofit and open offerings in the gifting economy.</p>
+    </div>
+  </section>
+  <!-- CALL FROM MONTAINHAS MÁGICAS -->
+  <section class="call" id="call" aria-labelledby="call-title">
+    <div class="container">
+      <h2 id="call-title" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">A Call From the Montanhas Mágicas</h2>
+      <div class="call-visual" style="margin: 16px 0px 18px; translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">
+        <!-- Replace with drone footage or waterfall scene -->
+        <video src="assets/agua-lila.mp4" autoplay="" muted="" playsinline="" loop=""></video>
+      </div>
+      <div style="max-width:880px">
+        <p style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">Our <em>Templo da Água Lila</em> in central Portugal is transforming an abandoned canyon valley into a <strong>sanctuary of Divine Play</strong>, abundant waterfalls, and regenerative food forests. Yet the land still faces challenges—most notably, the removal of invasive eucalyptus to make way for thriving, fruitful ecosystems.</p>
+        <p style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">For two years we’ve worked to prepare the land for visitors. Recently, our 41-year-old tractor split in half, leaving us without the means to safely continue. By grace, no one was seriously hurt.</p>
+        <p style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">We now urgently need a <strong>smaller, safer tractor with a roll bar</strong> to handle our steep terrain and complete this transformation into a <strong>center for spiritual healing and regeneration</strong>.</p>
+      </div>
+    </div>
+  </section>
 
-<section class="content-section">
-    <h2><a href="agua-lila.html">Água Lila: A Sacred Space</a></h2>
-    <p>Água Lila is a Temple dedicated to worship and community within the Synchronicity Engine. It is a sacred space where members engage in rituals, collective prayer, and offerings to nourish the soul, body, and mind. As part of the greater network, Água Lila represents a tangible connection to the Divine and the community’s ongoing contribution to collective consciousness.</p>
-</section> -->
+  <!-- TRACTOR FUND -->
+  <section class="fund" id="tractor-fund" aria-labelledby="fund-title">
+    <div class="container">
+      <h2 id="fund-title" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">Join the Tractor Fund</h2>
+      <p style="max-width: 860px; opacity: 0.92; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Your donation to the Tractor Fund is <strong>fully tax-deductible</strong> and will directly support this work. Choose a gift below or enter a custom amount. Every contribution mints <strong>Tokens of Gratitude</strong> to your name.</p>
+      <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin:.6rem 0 1rem">
+        <!-- Replace hrefs with your real donation links -->
+        <a class="btn btn-primary" href="https://example.org/donate/tractor" target="_blank" rel="noopener">Donate €50</a>
+        <a class="btn btn-primary" href="https://example.org/donate/tractor" target="_blank" rel="noopener">Donate €150</a>
+        <a class="btn btn-primary" href="https://example.org/donate/tractor" target="_blank" rel="noopener">Donate €500</a>
+        <a class="btn btn-ghost" href="https://example.org/donate/tractor" target="_blank" rel="noopener">Custom Amount</a>
+      </div>
 
-</div> <!-- End of content-container -->
+      <div class="impact" aria-label="Impact breakdown">
+        <div class="tile" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);"><strong>€50</strong><br>Fuel + safety gear for volunteer crew</div>
+        <div class="tile" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);"><strong>€150</strong><br>Transport &amp; installation of water bars</div>
+        <div class="tile" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);"><strong>€500</strong><br>Eucalyptus removal + native tree planting</div>
+      </div>
 
-<footer class="footer">
-    <img src="images/logo1.jpeg" alt="Logo" style="width: 100px; height: auto; display: block; margin: 0 auto 10px;">
-    <p>© 2024 Synchronicity Engine by Temples of Refuge | <a href="contact.html" style="color: #fff;">Contact Us</a></p>
-</footer>
+      <details style="margin-top:1rem; opacity:.95">
+        <summary style="cursor:pointer">What are Tokens of Gratitude?</summary>
+        <p style="margin-top: 0.4rem; translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">A spiritual participation currency that acknowledges your blessing in this work. Your Gratitude can influence nonprofit priorities and unlock offerings in the gifting economy.</p>
+      </details>
+    </div>
+  </section>
 
-<script>
-    function openLightbox() {
-        document.getElementById('lightbox').style.display = 'flex';
-    }
+  <!-- FOOTER CTA -->
+  <section class="footer-cta" id="footer-cta" aria-labelledby="footer-title">
+    <div class="container" style="text-align:center">
+      <h2 id="footer-title" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">Sow Into the Vision</h2>
+      <p style="max-width: 820px; margin: 0px auto 1rem; opacity: 0.9; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">If this mission speaks to your heart, we invite you to help create Eden on Earth, one valley at a time.</p>
+      <div style="display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap">
+        <a class="btn btn-primary" href="file:///Users/truman/Downloads/synchronicity_engine_storytelling_landing_html_gsap.html#tractor-fund">Donate to the Tractor Fund</a>
+        <a class="btn btn-ghost" href="https://example.org/synchronicity" target="_blank">Support the Synchronicity Engine</a>
+      </div>
+      <p style="opacity: 0.6; margin-top: 1.2rem; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Temples of Refuge · 508(c)(1)(a) · Tax-deductible in the U.S. and select countries</p>
+    </div>
+  </section>
 
-    function closeLightbox() {
-        document.getElementById('lightbox').style.display = 'none';
-    }
-</script>
-</body>
-</html>
+  <!-- Sticky floating CTA -->
+  <div class="sticky-cta" aria-label="Quick donate">
+    <a class="btn btn-primary" href="file:///Users/truman/Downloads/synchronicity_engine_storytelling_landing_html_gsap.html#tractor-fund" aria-label="Donate now">Donate</a>
+    <a class="btn btn-ghost" href="file:///Users/truman/Downloads/synchronicity_engine_storytelling_landing_html_gsap.html#synchronicity" aria-label="Learn more">Learn</a>
+  </div>
+
+  <!-- GSAP / ScrollTrigger for tasteful motion -->
+  <script src="./index_files/gsap.min.js"></script>
+  <script src="./index_files/ScrollTrigger.min.js"></script>
+  <script>
+    (function(){
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      // HERO title reveal
+      gsap.from('.hero h1', {y: 24, opacity: 0, duration: 1.1, ease: 'power3.out', delay: .2});
+      gsap.from('.hero p', {y: 20, opacity: 0, duration: .9, ease: 'power2.out', delay: .45});
+      gsap.from('.hero .btn', {y: 16, opacity: 0, duration: .7, ease: 'power2.out', stagger: .08, delay: .6});
+
+      // Parallax panels subtle zoom
+      gsap.utils.toArray('.panel img').forEach((img)=>{
+        gsap.to(img, {
+          scale: 1.02,
+          ease: 'none',
+          scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true }
+        });
+      });
+
+      // Fade-up on sections
+      gsap.utils.toArray('section').forEach((sec)=>{
+        if(sec.id==='top') return;
+        gsap.from(sec.querySelectorAll('h2, p, .dev-card, .call-visual, .impact .tile'), {
+          y: 28, opacity: 0, duration: .9, ease: 'power2.out', stagger: .08,
+          scrollTrigger: { trigger: sec, start: 'top 80%' }
+        });
+      });
+
+      // Subtle nav show on scroll up
+      let last = 0; const nav = document.querySelector('.nav');
+      ScrollTrigger.create({
+        start: 0,
+        onUpdate: self => {
+          const y = self.scroll();
+          const goingUp = y < last;
+          nav.style.transform = goingUp || y < 10 ? 'translateY(0)' : 'translateY(-100%)';
+          last = y;
+        }
+      });
+    })();
+  </script>
+
+
+</body></html>
