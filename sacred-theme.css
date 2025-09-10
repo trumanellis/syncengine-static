@@ -243,7 +243,7 @@ body::before {
     max-width: 900px;
     margin: 0 auto; /* Ensure proper centering */
     padding: 0 var(--space-lg);
-    padding-top: 110px; /* Adjust for new sacred circle position */
+    padding-top: 130px; /* Adjust for new sacred circle position */
     z-index: 1;
 }
 
@@ -251,7 +251,7 @@ body::before {
     width: 80px; /* Even smaller */
     height: 80px;
     position: absolute;
-    top: 110px; /* Move below nav bar to avoid overlap */
+    top: 130px; /* Move further below nav bar to avoid overlap */
     left: 50%;
     transform: translateX(-50%);
     z-index: 500; /* Below nav (1000) but above other content */
