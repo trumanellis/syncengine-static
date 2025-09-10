@@ -806,6 +806,21 @@ li strong {
     border-radius: 4px;
 }
 
+/* Urgent task styling */
+.urgent-task {
+    background: rgba(255, 248, 231, 0.03);
+    border: 1px solid rgba(255, 179, 0, 0.2);
+    border-radius: 12px;
+    padding: var(--space-md);
+    transition: all 0.3s var(--ease-smooth);
+}
+
+.urgent-task:hover {
+    background: rgba(255, 248, 231, 0.08);
+    border-color: rgba(255, 179, 0, 0.4);
+    transform: translateY(-2px);
+}
+
 /* Motion preferences */
 @media (prefers-reduced-motion: reduce) {
     * {
