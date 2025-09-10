@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Little Orange Kubota - A Scrolling Story | Synchronicity Engine</title>
+    <meta name="description" content="The immersive story of our faithful tractor's journey from hope to heartbreak, told through scroll-driven animations and beautiful glassmorphic design.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sacred-theme.css">
+    <style>
+        :root {
+            /* Everforest Dark color palette */
+            --ef-bg0: #2d353b;
+            --ef-bg1: #343f44;
+            --ef-bg2: #3d484d;
+            --ef-bg3: #475258;
+            --ef-bg4: #4f585e;
+            --ef-bg5: #56635f;
+            --ef-fg: #d3c6aa;
+            --ef-red: #e67e80;
+            --ef-orange: #e69875;
+            --ef-yellow: #dbbc7f;
+            --ef-green: #a7c080;
+            --ef-aqua: #83c092;
+            --ef-blue: #7fbbb3;
+            --ef-purple: #d699b6;
+            --ef-gray0: #7a8478;
+            --ef-gray1: #859289;
+            --ef-gray2: #9da9a0;
+            
+            /* Enhanced glass effects with Everforest */
+            --glass-bg: rgba(45, 53, 59, 0.08);
+            --glass-bg-strong: rgba(45, 53, 59, 0.15);
+            --glass-border: rgba(211, 198, 170, 0.18);
+            --glass-glow: 0 0 40px rgba(167, 192, 128, 0.25);
+            --glass-glow-strong: 0 0 80px rgba(167, 192, 128, 0.35);
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-strong: 0 16px 64px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, var(--ef-bg0) 0%, var(--ef-bg1) 30%, var(--ef-bg2) 70%, var(--ef-bg3) 100%);
+            background-attachment: fixed;
+            color: var(--ef-fg);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Everforest glowing background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(167, 192, 128, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(131, 192, 146, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(127, 187, 179, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(219, 188, 127, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .scroll-container {
+            height: 100vh;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        /* Enhanced Glassmorphic cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 2px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 
+                var(--shadow-soft),
+                var(--glass-glow),
+                inset 0 1px 0 rgba(251, 241, 199, 0.1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            margin: 3rem auto;
+            max-width: 900px;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--ef-green), transparent);
+            opacity: 0.6;
+        }
+
+        .glass-card.in-view {
+            transform: translateY(0);
+            opacity: 1;
+            box-shadow: 
+                var(--shadow-strong),
+                var(--glass-glow-strong),
+                inset 0 1px 0 rgba(251, 241, 199, 0.2),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(45deg, rgba(167, 192, 128, 0.1), rgba(131, 192, 146, 0.08));
+        }
+
+        .hero-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 4rem;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--ef-yellow), var(--ef-fg));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+
+        /* Story sections */
+        .story-section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .story-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-text strong {
+            color: var(--ef-yellow);
+        }
+
+        /* Media containers */
+        .media-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-strong);
+            margin: 2rem 0;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .media-container.in-view {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .media-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .media-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* Vertical video */
+        .vertical-video {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .vertical-video iframe {
+            height: 600px;
+        }
+
+        /* Gallery */
+        .wreckage-gallery {
+            position: relative;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .gallery-container {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            animation: autoScroll 15s infinite;
+        }
+
+        .gallery-slide {
+            flex: 0 0 33.333%;
+            position: relative;
+            padding: 1rem;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+
+        @keyframes autoScroll {
+            0%, 30% { transform: translateX(0); }
+            33.33%, 63.33% { transform: translateX(-33.333%); }
+            66.66%, 96.66% { transform: translateX(-66.666%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Floating elements */
+        .floating-element {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        /* Highlight boxes */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(167, 192, 128, 0.15), rgba(131, 192, 146, 0.1));
+            border: 1px solid var(--ef-green);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(167, 192, 128, 0.1);
+        }
+
+        /* Navigation */
+        .scroll-nav {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .scroll-nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .scroll-nav-dot.active {
+            background: var(--ef-green);
+            transform: scale(1.2);
+            box-shadow: 0 0 20px rgba(167, 192, 128, 0.5);
+        }
+
+        /* Donation section */
+        .donation-section {
+            background: linear-gradient(135deg, var(--ef-green), rgba(167, 192, 128, 0.8));
+            color: var(--ef-bg0);
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .donation-form {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-strong);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .glass-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .story-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating decorative elements -->
+    <div class="floating-element" style="left: 10%; font-size: 2rem;">🚜</div>
+    <div class="floating-element" style="left: 80%; font-size: 1.5rem; animation-delay: -5s;">🌿</div>
+    <div class="floating-element" style="left: 50%; font-size: 1.8rem; animation-delay: -10s;">⚡</div>
+
+    <!-- Scroll Navigation -->
+    <div class="scroll-nav">
+        <div class="scroll-nav-dot active" data-section="0"></div>
+        <div class="scroll-nav-dot" data-section="1"></div>
+        <div class="scroll-nav-dot" data-section="2"></div>
+        <div class="scroll-nav-dot" data-section="3"></div>
+        <div class="scroll-nav-dot" data-section="4"></div>
+        <div class="scroll-nav-dot" data-section="5"></div>
+        <div class="scroll-nav-dot" data-section="6"></div>
+    </div>
+
+    <div class="scroll-container">
+        <!-- Hero Section -->
+        <section class="hero" data-section="0">
+            <div class="hero-content">
+                <h1>🚜 Our Little Orange Kubota</h1>
+                <p>A story of faith, hard work, and the practical needs of building Paradise</p>
+                <div style="margin-top: 2rem; font-size: 1rem; opacity: 0.7;">
+                    Scroll to begin the journey
+                </div>
+            </div>
+        </section>
+
+        <!-- Beginning -->
+        <section class="story-section" data-section="1">
+            <div class="glass-card">
+                <div class="story-text">
+                    <p>Today we say our grateful goodbyes to our Little Orange Kubota who got us off the ground here at Templo de Água Lila.</p>
+                    
+                    <p>He came to us from up the mountain, €5000 for a time machine to 1984 rural Japan. Complete with Japanese instructions.</p>
+                    
+                    <p>Before we even got electricity. It was a precursor.</p>
+                </div>
+                
+                <div class="media-container">
+                    <img src="/TractorTemple.jpg" alt="Our Little Orange Kubota at the Temple">
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>We had to get a tractor.</strong></p>
+                    <p>It was the only way we were going to make any progress at all on getting the place ready.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning -->
+        <section class="story-section" data-section="2">
+            <div class="glass-card">
+                <div class="story-text">
+                    <p>I'd never driven a tractor before, heck I couldn't even drive a manual car back then.</p>
+                    
+                    <p>But it had to be done. I'll figure it out, always have before.</p>
+                    
+                    <p>That's part of the reason for our belief in God. <strong>The Universe has gotten us here so far and we're grateful for the journey, even the difficult parts.</strong></p>
+                </div>
+                
+                <div class="media-container">
+                    <img src="/TractorSmile.jpg" alt="Dr. Truman with the Little Orange Kubota">
+                </div>
+            </div>
+        </section>
+
+        <!-- The Danger -->
+        <section class="story-section" data-section="3">
+            <div class="glass-card">
+                <h2 style="color: var(--ef-orange); margin-bottom: 2rem;">⚠️ The Danger Revealed</h2>
+                
+                <div class="story-text">
+                    <p>So I learned how to drive a tractor and in the learning I discovered a major concern.</p>
+                    
+                    <p>This tractor was made for flat terrain in an age before roll bars were required by law. Because we find out, <strong>tractors tipping over is a common cause of death in this part of the world.</strong></p>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>"I'm shook. Annabelle was newly pregnant and I didn't want to die before meeting my daughter."</strong></p>
+                    <p>Then last autumn I was gathering firewood for the winter when we accidentally overloaded the back bucket and the tractor suddenly tipped, suddenly turning right towards the edge of the terrace. No functional safety equipment.</p>
+                    <p>I slam the breaks and drop the bucket to stop the tractor from driving off the edge.</p>
+                </div>
+                
+                <div class="media-container">
+                    <img src="/TractorAnnabelle.jpg" alt="Annabelle with our Little Orange Kubota">
+                </div>
+            </div>
+        </section>
+
+        <!-- Happy Times -->
+        <section class="story-section" data-section="4">
+            <div class="glass-card">
+                <div class="story-text">
+                    <p>Eventually (with our Little Orange Kubota's help) we get a reliable source of electricity allowing us to make the all-important upgrade to the luxury of having a real fridge (also transported down with our Little Orange Kubota).</p>
+                </div>
+                
+                <div class="media-container vertical-video">
+                    <iframe 
+                        src="https://www.youtube.com/embed/sWcdd9U24G4" 
+                        title="Little Orange Kubota Transporting Our Fridge"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <p style="text-align: center; font-style: italic; color: var(--ef-aqua); margin-top: 1rem;">
+                    A milestone moment - carefully transporting our precious fridge down to the Temple
+                </p>
+            </div>
+        </section>
+
+        <!-- The Final Service -->
+        <section class="story-section" data-section="5">
+            <div class="glass-card">
+                <h2 style="color: var(--ef-red); margin-bottom: 2rem;">💔 The Final Service</h2>
+                
+                <div class="story-text">
+                    <p>We slowly moved our way through my infinite to-do list up till about one month ago when something went wrong.</p>
+                    
+                    <p>John's been helping out around the farm a lot and mastered the art of aggressive tractor driving one summer in the Outback. He'd just given the tractor a full service, a kind of final act of love.</p>
+                    
+                    <p>Reversing it out of the service yard, something happened. The fan fell out of place. It started making a weird noise — so he parked it.</p>
+                    
+                    <p>Tries to move it again and boom. <strong>Chassis cracks in two—the tractor crashes in on itself.</strong></p>
+                </div>
+                
+                <div class="wreckage-gallery media-container">
+                    <div class="gallery-container">
+                        <div class="gallery-slide">
+                            <img src="/TractorWreck1.jpg" alt="Overhead view - chassis completely split in two">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="/TractorWreck2.jpg" alt="Side view showing the separated chassis sections">
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="/TractorWreck3.jpg" alt="The broken tractor being prepared for removal">
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; font-style: italic; color: #ff6b6b; margin-top: 1rem;">
+                    The devastating final breakdown - our Little Orange Kubota's chassis split completely in two
+                </p>
+                
+                <div class="story-text" style="margin-top: 2rem;">
+                    <p>River helps us say our grateful goodbyes to the Little Orange Kubota and Celso helped hauled it the rest of the way up the mountain in his blue behemoth.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Journey -->
+        <section class="story-section" data-section="6">
+            <div class="glass-card">
+                <h2 style="color: #ff6b6b; margin-bottom: 2rem;">🎬 The Final Journey</h2>
+                
+                <div class="media-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/zxP_D_v8dbs" 
+                        title="The Little Orange Kubota's Final Journey - Towed by Celso's Blue Tractor"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <p style="text-align: center; font-style: italic; color: #ff6b6b; margin-top: 1rem;">
+                    Our faithful companion's final journey up the mountain, towed by neighbor Celso's blue behemoth to its final resting place
+                </p>
+                
+                <div class="highlight-box" style="margin-top: 3rem; text-align: center;">
+                    <p style="font-size: 1.5rem; margin-bottom: 1rem;"><strong>€143 from the salvage yard for the weight in metal.</strong></p>
+                    <p style="font-size: 1.2rem; color: var(--primary-orange);">From €5,000 faithful companion to €143 scrap metal.</p>
+                    <p style="font-size: 1.2rem; margin-top: 1rem;"><strong>But the sacred work must continue.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section class="donation-section">
+            <div class="glass-card donation-form">
+                <h2 style="color: var(--deep-purple); text-align: center; margin-bottom: 2rem;">🌱 Help Us Continue Building Paradise</h2>
+                
+                <p style="font-size: 1.2rem; text-align: center; margin-bottom: 2rem; color: var(--deep-purple);">
+                    <strong>If you believe in the work we're doing here, regenerating Eden, bringing heaven to earth through hands in the dirt—please consider donating to our Tractor Fund.</strong>
+                </p>
+                
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-soft); margin: 2rem 0;">
+                    <iframe 
+                        src="https://give.tithe.ly/?formId=57a0dcf9-7e25-46a1-8f4e-aa5a4f07f10f" 
+                        width="100%" 
+                        height="600" 
+                        frameborder="0" 
+                        scrolling="no">
+                    </iframe>
+                </div>
+                
+                <div style="text-align: center; color: var(--deep-purple);">
+                    <p style="font-style: italic; font-size: 1.1rem; margin-top: 2rem;">
+                        <strong>We need a tractor.</strong>
+                    </p>
+                    <p style="margin-top: 2rem;">
+                        All the best,<br>
+                        <strong>Dr. Truman</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="sacred-theme.js"></script>
+    <script>
+        // Scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animatable elements
+        document.querySelectorAll('.glass-card, .media-container').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll navigation
+        const sections = document.querySelectorAll('[data-section]');
+        const navDots = document.querySelectorAll('.scroll-nav-dot');
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionIndex = entry.target.getAttribute('data-section');
+                    navDots.forEach(dot => dot.classList.remove('active'));
+                    document.querySelector(`[data-section="${sectionIndex}"].scroll-nav-dot`).classList.add('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => sectionObserver.observe(section));
+
+        // Click navigation
+        navDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const sectionIndex = dot.getAttribute('data-section');
+                document.querySelector(`[data-section="${sectionIndex}"]`).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+    </script>
+</body>
+</html>
