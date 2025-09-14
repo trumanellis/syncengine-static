@@ -7,7 +7,7 @@
     <meta name="description" content="What if we could recreate Paradise, one backyard at a time? Join the Eden Game where every intention you plant helps transform Earth back into the abundant Garden.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="sacred-theme.css">
 </head>
 <body class="dark-section">
@@ -16,40 +16,19 @@
     <div class="blessing-particle"></div>
     <div class="blessing-particle"></div>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">Synchronicity Engine</a>
-            <ul class="nav-links">
-                <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="/philosophy" class="nav-link">Philosophy</a></li>
-                <li><a href="/temples" class="nav-link">Temples</a></li>
-                <li><a href="/agua-lila" class="nav-link">Água Lila</a></li>
-                <li><a href="/tractor" class="nav-link">Support</a></li>
-            </ul>
-        </div>
-    </nav>
+    <nav class="nav" id="main-nav"></nav>
 
-    <!-- Hero Section -->
-    <section class="hero sacred-bg">
-        <div class="hero-content">
-            <div class="sacred-circle">
-                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Eden Sacred Geometry -->
-                    <circle cx="100" cy="100" r="30" stroke="var(--honey-gold)" stroke-width="2" fill="none" opacity="0.8"/>
-                    <circle cx="100" cy="77" r="30" stroke="var(--sage)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="120" cy="88.5" r="30" stroke="var(--sky-blessed)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="120" cy="111.5" r="30" stroke="var(--sage)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="100" cy="123" r="30" stroke="var(--honey-gold)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="80" cy="111.5" r="30" stroke="var(--sky-blessed)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="80" cy="88.5" r="30" stroke="var(--sage)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <!-- Eden tree icon -->
-                    <text x="100" y="110" text-anchor="middle" font-size="20" fill="var(--honey-gold)">🌳</text>
-                </svg>
-            </div>
-            <h1 class="hero-title fade-in">The Eden Game</h1>
-            <p class="hero-subtitle fade-in">What if we could recreate Paradise, one backyard at a time?</p>
-            <div class="hero-quote fade-in">
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-badge">Paradise Restoration Game</div>
+            
+            <h1>🌳 The Eden Game</h1>
+            
+            <p class="hero-subtitle">
+                What if we could recreate Paradise, one backyard at a time?
+            </p>
+
+            <div class="philosophy-quote">
                 "In every seed lies the blueprint of Paradise.<br>
                 In every plot of land lies the potential for Eden.<br>
                 In every community lies the power to restore the Garden.<br>
@@ -352,6 +331,6 @@
         </div>
     </footer>
 
-    <script src="sacred-theme.js"></script>
+    <script src="sacred-theme.js" defer></script>
 </body>
 </html>

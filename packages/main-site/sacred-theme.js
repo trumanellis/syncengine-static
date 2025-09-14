@@ -3,35 +3,48 @@
 
 // Centralized Navigation Structure
 function createNavigation() {
-    const navHTML = `
-        <div class="nav-container">
-            <a href="/" class="nav-logo">Synchronicity Engine</a>
-            <ul class="nav-links">
-                <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="/philosophy" class="nav-link">Philosophy</a></li>
-                <li><a href="/temples" class="nav-link">Temples</a></li>
-                <li><a href="/agua-lila" class="nav-link">Água Lila</a></li>
-                <li><a href="/tractor" class="nav-link">Support</a></li>
-            </ul>
-        </div>
+    const nav = document.querySelector('nav.nav, #main-nav');
+    if (!nav) return;
+    
+    // Create the complete navigation structure
+    const navContainer = document.createElement('div');
+    navContainer.className = 'nav-container';
+    
+    const navElement = document.createElement('nav');
+    navElement.className = 'nav';
+    
+    navElement.innerHTML = `
+        <a href="/" class="logo">
+            <div class="logo-symbol">SE</div>
+            Synchronicity Engine
+        </a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/eden-game.html">Eden Game</a></li>
+            <li><a href="/temples.html">Temples</a></li>
+            <li><a href="/agua-lila.html">Água Lila</a></li>
+            <li><a href="/tractor.html">Support</a></li>
+        </ul>
+        <button class="mobile-menu-toggle">☰</button>
     `;
     
-    // Find nav element and inject centralized structure
-    const nav = document.querySelector('nav.nav');
-    if (nav && nav.children.length === 0) {
-        nav.innerHTML = navHTML;
-        
-        // Set active state based on current page
-        const currentPath = window.location.pathname;
-        const navLinks = nav.querySelectorAll('.nav-link');
-        
-        navLinks.forEach(link => {
-            const linkPath = link.getAttribute('href');
-            if (linkPath === currentPath || (currentPath === '/' && linkPath === '/')) {
-                link.classList.add('active');
-            }
-        });
-    }
+    navContainer.appendChild(navElement);
+    
+    // Replace the existing nav with our complete structure
+    nav.parentNode.replaceChild(navContainer, nav);
+    
+    // Set active state based on current page
+    const currentPath = window.location.pathname;
+    const navLinks = navContainer.querySelectorAll('ul.nav-links a');
+    
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        if (linkPath === currentPath || 
+            (currentPath === '/' && linkPath === '/') ||
+            (currentPath.includes('tractor') && linkPath.includes('tractor'))) {
+            link.parentElement.classList.add('active');
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {

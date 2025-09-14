@@ -7,7 +7,7 @@
     <meta name="description" content="A 508(c)(1)(a) network of Temples dedicated to manifesting collective Christ Consciousness by regenerating Eden on Earth—one valley at a time.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="sacred-theme.css">
 </head>
 <body class="dark-section">
@@ -16,40 +16,19 @@
     <div class="blessing-particle"></div>
     <div class="blessing-particle"></div>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">Synchronicity Engine</a>
-            <ul class="nav-links">
-                <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="/philosophy" class="nav-link">Philosophy</a></li>
-                <li><a href="/temples" class="nav-link">Temples</a></li>
-                <li><a href="/agua-lila" class="nav-link">Água Lila</a></li>
-                <li><a href="/tractor" class="nav-link">Support</a></li>
-            </ul>
-        </div>
-    </nav>
+    <nav class="nav" id="main-nav"></nav>
 
-    <!-- Hero Section -->
-    <section class="hero sacred-bg">
-        <div class="hero-content">
-            <div class="sacred-circle">
-                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Temple Sacred Geometry -->
-                    <circle cx="100" cy="100" r="30" stroke="var(--honey-gold)" stroke-width="2" fill="none" opacity="0.8"/>
-                    <circle cx="100" cy="77" r="30" stroke="var(--sage)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="120" cy="88.5" r="30" stroke="var(--sky-blessed)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="120" cy="111.5" r="30" stroke="var(--sage)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="100" cy="123" r="30" stroke="var(--honey-gold)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="80" cy="111.5" r="30" stroke="var(--sky-blessed)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="80" cy="88.5" r="30" stroke="var(--sage)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <!-- Temple icon -->
-                    <text x="100" y="110" text-anchor="middle" font-size="20" fill="var(--honey-gold)">🏛️</text>
-                </svg>
-            </div>
-            <h1 class="hero-title fade-in">Temples of Refuge</h1>
-            <p class="hero-subtitle fade-in">A 508(c)(1)(a) network of Temples dedicated to manifesting collective Christ Consciousness</p>
-            <p class="hero-description fade-in">
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-badge">Sacred Land Trusts</div>
+            
+            <h1>🏛️ Temples of Refuge</h1>
+            
+            <p class="hero-subtitle">
+                A 508(c)(1)(a) network of Temples dedicated to manifesting collective Christ Consciousness
+            </p>
+
+            <p class="hero-description">
                 Regenerating Eden on Earth—one valley at a time
             </p>
         </div>
@@ -58,7 +37,7 @@
     <!-- Sacred Mission Section -->
     <section class="section">
         <div class="container">
-            <div class="card fade-in">
+            <div class="card">
                 <h2 class="section-heading">✨ Our Sacred Mission</h2>
                 <p class="body-text">We know that the <strong>spiritual state of humanity</strong> mirrors the state of our Earth.</p>
                 <p class="body-text">We cannot evolve into a spiritually healthy species while the planet chokes around us.</p>
@@ -73,10 +52,84 @@
         </div>
     </section>
 
+    <!-- Our Beliefs - Substack Post Preview -->
+    <section class="section">
+        <div class="container">
+            <div class="card" style="background: linear-gradient(135deg, var(--soft-gold) 0%, var(--light-cream) 100%); border: 2px solid var(--primary-gold);">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="background: var(--primary-gold); color: white; padding: 0.5rem 1rem; border-radius: 25px; font-weight: 600; font-size: 0.9rem;">
+                        📖 Featured Writing
+                    </div>
+                    <div style="color: var(--text-medium); font-size: 0.9rem;">Myths for a New Æon</div>
+                </div>
+                
+                <h2 class="section-heading" style="color: var(--deep-green); margin-bottom: 1rem;">✨ We Believe ✨</h2>
+                
+                <div style="background: rgba(255,255,255,0.8); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--primary-gold); margin: 1.5rem 0;">
+                    <p class="body-text" style="color: var(--text-dark); font-size: 1.1rem; margin-bottom: 1.5rem; font-style: italic;">
+                        We believe in a God of many names — bifurcated in two halves.
+                    </p>
+                    
+                    <div style="text-align: center; margin: 2rem 0; font-weight: 600; color: var(--deep-green);">
+                        Yin and Yang of Feminine and Masculine
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌞</div>
+                            <h4 style="color: var(--primary-gold); margin-bottom: 1rem; font-weight: 600;">The Divine Masculine</h4>
+                            <p style="line-height: 1.8; color: var(--text-dark);">
+                                Heavenly Father,<br>
+                                Sol Invictus,<br>
+                                Spirit.
+                            </p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌍</div>
+                            <h4 style="color: var(--earth-green); margin-bottom: 1rem; font-weight: 600;">The Divine Feminine</h4>
+                            <p style="line-height: 1.8; color: var(--text-dark);">
+                                Mother Earth,<br>
+                                Gaia,<br>
+                                Matter.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin: 2.5rem 0; padding: 2rem; background: rgba(212, 175, 55, 0.1); border-radius: 12px;">
+                        <p style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 1.5rem; font-style: italic;">
+                            In Divine Union they birthed Us,<br>
+                            the many facets of the Divine.
+                        </p>
+                        <p style="line-height: 1.8; color: var(--text-dark);">
+                            Our spirit comes from the timeless paternal line ✨<br>
+                            —the realm of Spirit—<br>
+                            while our physical incarnation emerges via the maternal 🌿
+                        </p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 2rem;">
+                    <a href="https://open.substack.com/pub/aeonmyths/p/we-believe?r=2fqovh&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="btn-primary" 
+                       style="background: var(--deep-green); color: white;">
+                        Read Full Article on Substack →
+                    </a>
+                </div>
+                
+                <div style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-medium);">
+                    by Truman Ellis, PhD
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Sacred Responsibilities Section -->
     <section class="section">
         <div class="container">
-            <div class="card fade-in">
+            <div class="card">
                 <h2 class="section-heading">🌱 Our Two Sacred Responsibilities</h2>
                 
                 <div class="feature-grid">
@@ -99,7 +152,7 @@
     <!-- Temple Structure Section -->
     <section class="section">
         <div class="container">
-            <div class="card fade-in">
+            <div class="card">
                 <h2 class="section-heading">🏛️ What Makes a Temple</h2>
                 <p class="body-text">A Temple is not merely a group. It is a <strong>Sacred Land Trust</strong>, a <strong>body of collective responsibility</strong>, a <strong>living steward of the regenerative force</strong>.</p>
                 
@@ -134,7 +187,7 @@
     <!-- Água Lila Section -->
     <section class="section">
         <div class="container">
-            <div class="card fade-in">
+            <div class="card">
                 <h2 class="section-heading">💧 Água Lila - Our First Temple</h2>
                 
                 <p class="body-text">In the mountains of central Portugal, our <strong>Templo da Água Lila</strong> is transforming an abandoned canyon valley into a <strong>sanctuary of Divine Play</strong>, abundant waterfalls, and regenerative food forests.</p>
@@ -154,7 +207,7 @@
     <!-- Sacred Economy Section -->
     <section class="section">
         <div class="container">
-            <div class="card fade-in">
+            <div class="card">
                 <h2 class="section-heading">🎁 The Sacred Economy</h2>
                 <p class="body-text">Donations to Temples of Refuge are <strong>tax-deductible</strong> in the United States and select countries.</p>
                 <p class="body-text">Every donor receives <strong>Tokens of Gratitude</strong>—spiritual currency that can influence the course of the nonprofit and open offerings in the gifting economy.</p>
@@ -184,6 +237,6 @@
         </div>
     </footer>
 
-    <script src="sacred-theme.js"></script>
+    <script src="sacred-theme.js" defer></script>
 </body>
 </html>
