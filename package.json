@@ -1,20 +1,16 @@
 {
   "name": "sync-evolve",
   "version": "1.0.0",
-  "description": "Synchronicity Engine - Multi-site static generation",
+  "description": "Synchronicity Engine - Sacred Technology for Regeneration",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "dev:main": "vite --config packages/main-site/vite.config.js",
-    "dev:temples": "vite --config packages/temples-site/vite.config.js", 
-    "dev:eden": "vite --config packages/eden-site/vite.config.js",
-    "build": "npm run build:main && npm run build:temples && npm run build:eden",
-    "build:main": "vite build --config packages/main-site/vite.config.js",
-    "build:temples": "vite build --config packages/temples-site/vite.config.js",
-    "build:eden": "vite build --config packages/eden-site/vite.config.js",
-    "preview": "vite preview"
+    "dev": "vite --config packages/main-site/vite.config.js",
+    "build": "node deploy.js",
+    "preview": "vite preview --config packages/main-site/vite.config.js",
+    "deploy": "npm run build && git add . && git commit -m 'deploy: Update GitHub Pages' && git push"
   },
   "devDependencies": {
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vite-plugin-html": "^3.2.2"
   }
 }

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synchronicity Engine | Sacred Technology for Regeneration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-green: #1B4332;
+            --forest-green: #2D5A3D;
+            --sage-green: #52796F;
+            --light-sage: #84A98C;
+            --cream: #FAF7F0;
+            --warm-white: #FEFCF7;
+            --soft-gold: #F4E9D1;
+            --text-dark: #1A1A1A;
+            --text-medium: #4A4A4A;
+            --text-light: #7A7A7A;
+            
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 40px rgba(0, 0, 0, 0.12);
+            --border-radius: 12px;
+            --border-radius-large: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--warm-white);
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(250, 247, 240, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--deep-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-symbol {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--sage-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-green);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--deep-green), var(--forest-green));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--soft-gold) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="%23D4AF37" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        .hero-badge::before {
+            content: '✨';
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--deep-green), var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-medium);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--deep-green), var(--forest-green));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            color: var(--deep-green);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            border-color: var(--primary-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Feature Section */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--warm-white);
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--soft-gold);
+            color: var(--deep-green);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--sage-green));
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--sage-green));
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--deep-green) 0%, var(--forest-green) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .philosophy-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .philosophy .section-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+
+        .philosophy .section-title {
+            color: white;
+        }
+
+        .philosophy .section-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+        }
+
+        .philosophy-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-large);
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--deep-green);
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 6rem 2rem 3rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 2rem;
+            }
+
+            .nav {
+                padding: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-container > * {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .hero h1 {
+            animation-delay: 0.1s;
+        }
+
+        .hero-subtitle {
+            animation-delay: 0.2s;
+        }
+
+        .hero-buttons {
+            animation-delay: 0.3s;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <div class="logo-symbol">SE</div>
+                Synchronicity Engine
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#temples">Temples</a></li>
+                <li><a href="#agua-lila">Água Lila</a></li>
+                <li><a href="#support" class="cta-button">Support</a></li>
+            </ul>
+            <button class="mobile-menu-toggle">☰</button>
+        </nav>
+    </div>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-badge">Sacred Technology for Regeneration</div>
+            
+            <h1>Synchronicity Engine</h1>
+            
+            <p class="hero-subtitle">
+                A sacred technology ecosystem where human attention becomes the currency 
+                for regenerating Earth—one valley at a time.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="#features" class="btn-primary">
+                    See Paradise in Action
+                    <span>→</span>
+                </a>
+                <a href="#philosophy" class="btn-secondary">Learn the Vision</a>
+            </div>
+
+            <div class="scroll-indicator">
+                Scroll to explore
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <div class="section-badge">🌱 The Return to Sacred Design</div>
+                <h2 class="section-title">Technology That Heals</h2>
+                <p class="section-description">
+                    We live in an age of dazzling connection and deep disconnection. Our algorithms deliver more content, but less coherence. What's missing is not more power, but a <strong>sacred architecture</strong>—a pattern we can trust.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Sacred Attention Economy</h3>
+                    <p class="feature-description">
+                        Transform focused intention into Tokens of Gratitude that honor service and create abundance through the sacred act of paying attention.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title">Regenerative Networks</h3>
+                    <p class="feature-description">
+                        Connect with Temples of Refuge worldwide—communities dedicated to healing land, sharing resources, and co-creating Eden on Earth.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">AI Oracle Companions</h3>
+                    <p class="feature-description">
+                        Community-trained AI assistants that embody collective wisdom, helping you manifest abundance through guided action and shared knowledge.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Proof of Service</h3>
+                    <p class="feature-description">
+                        Document real-world regenerative actions that transform dreams into deeds, creating a living map of Earth's healing journey.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy" id="philosophy">
+        <div class="philosophy-container">
+            <div class="section-badge">✦ Sacred Design Principles</div>
+            <h2 class="section-title">A Living Myth for Our Time</h2>
+            <p class="section-description">
+                The Synchronicity Engine emerged not as a product, but as a <strong>remembrance</strong>. What if technology could heal instead of harm? What if our tools were aligned with love, truth, and resonance?
+            </p>
+            
+            <div class="philosophy-quote">
+                "This is not just software. It is a <strong>collective spell</strong>, a way of weaving human will into harmony with the planet."
+            </div>
+
+            <p class="section-description">
+                We are reawakening the <strong>Temple</strong> as a design archetype—not a monument to belief, but a living space of alignment where attention is sacred, gratitude is currency, and every action serves the regeneration of Self, Other, and Planet.
+            </p>
+        </div>
+    </section>
+</body>
+</html>
