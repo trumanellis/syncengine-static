@@ -7,7 +7,7 @@
     <meta name="description" content="In the mountains of Portugal, we're transforming abandoned land into a sanctuary of regeneration. See Paradise in action at our first Temple.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="sacred-theme.css">
 </head>
 <body class="dark-section">
@@ -16,41 +16,19 @@
     <div class="blessing-particle"></div>
     <div class="blessing-particle"></div>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">Synchronicity Engine</a>
-            <ul class="nav-links">
-                <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="/philosophy" class="nav-link">Philosophy</a></li>
-                <li><a href="/synchronicity" class="nav-link">The dApp</a></li>
-                <li><a href="/temples" class="nav-link">Temples</a></li>
-                <li><a href="/agua-lila" class="nav-link">Água Lila</a></li>
-                <li><a href="/tractor" class="nav-link">Support</a></li>
-            </ul>
-        </div>
-    </nav>
+    <nav class="nav" id="main-nav"></nav>
 
-    <!-- Hero Section -->
-    <section class="hero sacred-bg">
-        <div class="hero-content">
-            <div class="sacred-circle">
-                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Water Sacred Geometry -->
-                    <circle cx="100" cy="100" r="30" stroke="var(--honey-gold)" stroke-width="2" fill="none" opacity="0.8"/>
-                    <circle cx="100" cy="77" r="30" stroke="var(--sky-blessed)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="120" cy="88.5" r="30" stroke="var(--sage)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="120" cy="111.5" r="30" stroke="var(--sky-blessed)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="100" cy="123" r="30" stroke="var(--honey-gold)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="80" cy="111.5" r="30" stroke="var(--sage)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <circle cx="80" cy="88.5" r="30" stroke="var(--sky-blessed)" stroke-width="2" fill="none" opacity="0.6"/>
-                    <!-- Water drop icon -->
-                    <text x="100" y="110" text-anchor="middle" font-size="20" fill="var(--honey-gold)">💧</text>
-                </svg>
-            </div>
-            <h1 class="hero-title fade-in">Templo da Água Lila</h1>
-            <p class="hero-subtitle fade-in">Where sacred technology meets sacred land</p>
-            <p class="hero-description fade-in">
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-badge">Paradise in Action</div>
+            
+            <h1>💧 Templo da Água Lila</h1>
+            
+            <p class="hero-subtitle">
+                Where sacred technology meets sacred land
+            </p>
+
+            <p class="hero-description">
                 In the mountains of central Portugal, we're proving that Paradise restoration is possible
             </p>
         </div>
@@ -59,7 +37,7 @@
     <!-- The Living Proof -->
     <section class="section">
         <div class="container">
-            <div class="card fade-in">
+            <div class="card">
                 <h2 class="section-heading">🌿 The Living Proof</h2>
                 <p class="body-text">Água Lila is more than our first Temple—it's the living laboratory where the <strong>Synchronicity Engine's principles</strong> are tested in soil, stone, and sweat.</p>
                 
@@ -79,17 +57,49 @@
     <!-- The Challenge -->
     <section class="section">
         <div class="container">
-            <div class="card fade-in">
-                <h2 class="section-heading">🚜 The Challenge We Face</h2>
-                <p class="body-text">For two years we've worked to prepare this land for visitors, clearing invasive species and building infrastructure. Recently, our faithful 1984 Kubota tractor—our <strong>Little Orange Kubota</strong>—finally gave its last service.</p>
+            <div class="card">
+                <h2 class="section-heading">🚜 A Father's Promise</h2>
                 
-                <div class="sacred-highlight">
-                    <p class="body-text"><em>"The chassis cracked in two. The tractor crashed in on itself. God's grace it was stationary when this happened."</em></p>
+                <div style="background: var(--primary-gold); color: var(--deep-green); padding: 2.5rem; border-radius: 15px; margin: 2rem 0; text-align: center;">
+                    <h3 style="color: var(--deep-green); font-size: 1.3rem; margin-bottom: 1.5rem; font-weight: 600;">
+                        "I didn't want to die before meeting my daughter."
+                    </h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                        When our 1984 Kubota tractor nearly killed Dr. Truman on a steep terrace, with Annabelle newly pregnant, everything changed.
+                    </p>
+                    <p style="font-size: 1rem; margin-bottom: 2rem;">
+                        Now the chassis has cracked in two. Without safe equipment, we cannot complete the transformation of this land into a center for healing.
+                    </p>
+                    
+                    <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; align-items: center;">
+                        <a href="/tractor.html" class="btn-primary" style="background: var(--deep-green); color: white; font-size: 1.1rem; padding: 1rem 2rem;">
+                            Read the Full Story →
+                        </a>
+                        <div style="color: var(--deep-green); font-weight: 600; font-size: 0.95rem;">
+                            Help us build Paradise safely
+                        </div>
+                    </div>
                 </div>
                 
-                <p class="body-text">Without a tractor, we cannot safely continue the steep terrain work needed to complete this transformation into a center for spiritual healing and regeneration.</p>
-                
-                <p class="body-text"><strong>We need a smaller, safer tractor with a roll bar to handle our terrain and complete this sacred work.</strong></p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                    <div style="text-align: center; padding: 1.5rem; background: rgba(212, 175, 55, 0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚠️</div>
+                        <h4 style="margin-bottom: 1rem; color: var(--deep-green);">The Crisis</h4>
+                        <p style="font-size: 0.95rem;">Steep terrain + no safety equipment = life-threatening danger for our family</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 1.5rem; background: rgba(212, 175, 55, 0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🛡️</div>
+                        <h4 style="margin-bottom: 1rem; color: var(--deep-green);">The Solution</h4>
+                        <p style="font-size: 0.95rem;">A smaller, safer tractor with proper roll bar protection for our mountainous work</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 1.5rem; background: rgba(212, 175, 55, 0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌱</div>
+                        <h4 style="margin-bottom: 1rem; color: var(--deep-green);">The Vision</h4>
+                        <p style="font-size: 0.95rem;">Complete the sacred work of transforming this land into Paradise</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -97,7 +107,7 @@
     <!-- Your Role -->
     <section class="section">
         <div class="container">
-            <div class="card fade-in">
+            <div class="card">
                 <h2 class="section-heading">🌱 Your Role in Paradise Restoration</h2>
                 <p class="body-text">Every donation to our Tractor Fund is:</p>
                 
@@ -141,6 +151,6 @@
         </div>
     </footer>
 
-    <script src="sacred-theme.js"></script>
+    <script src="sacred-theme.js" defer></script>
 </body>
 </html>

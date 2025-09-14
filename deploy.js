@@ -1,16 +1,24 @@
 #!/usr/bin/env node
-import { copyFileSync, existsSync } from 'fs';
-import { resolve } from 'path';
+import { copyFileSync, existsSync, readdirSync } from 'fs';
+import { resolve, extname } from 'path';
 
-// Copy main files to root for GitHub Pages deployment
+// Copy files from packages/main-site to root for GitHub Pages deployment
 const sourceDir = 'packages/main-site';
-const filesToCopy = [
-  'index.html',
-  'sacred-theme.css',
-  'sacred-theme.js'
-];
 
 console.log('Deploying files for GitHub Pages...');
+
+// Get all files from the source directory
+const allFiles = readdirSync(sourceDir);
+
+// Filter for HTML, CSS, and JS files (excluding template files)
+const filesToCopy = allFiles.filter(file => {
+  const ext = extname(file).toLowerCase();
+  const isWebFile = ['.html', '.css', '.js'].includes(ext);
+  const isNotTemplate = !file.includes('template');
+  return isWebFile && isNotTemplate;
+});
+
+console.log(`Found ${filesToCopy.length} files to deploy:`);
 
 filesToCopy.forEach(file => {
   const sourcePath = resolve(sourceDir, file);

@@ -14,16 +14,16 @@ function createNavigation() {
     navElement.className = 'nav';
     
     navElement.innerHTML = `
-        <a href="/" class="logo">
+        <a href="index.html" class="logo">
             <div class="logo-symbol">SE</div>
             Synchronicity Engine
         </a>
         <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/eden-game.html">Eden Game</a></li>
-            <li><a href="/temples.html">Temples</a></li>
-            <li><a href="/agua-lila.html">Água Lila</a></li>
-            <li><a href="/tractor.html">Support</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="eden-game.html">Eden Game</a></li>
+            <li><a href="temples.html">Temples</a></li>
+            <li><a href="agua-lila.html">Água Lila</a></li>
+            <li><a href="tractor.html">Support</a></li>
         </ul>
         <button class="mobile-menu-toggle">☰</button>
     `;
