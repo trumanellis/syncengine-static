@@ -132,22 +132,15 @@
                 
                 <p class="body-text">Tries to move it again and boom. Chassis cracks in two  -the tractor crashes in on itself.</p>
                 
-                <div class="wreckage-gallery">
-                    <div class="gallery-container">
-                        <div class="gallery-slide active">
-                            <img src="TractorWreck1.jpg" alt="Overhead view - chassis completely split in two">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="TractorWreck2.jpg" alt="Side view showing the separated chassis sections">
-                        </div>
-                        <div class="gallery-slide">
-                            <img src="TractorWreck3.jpg" alt="The broken tractor being prepared for removal">
-                        </div>
+                <div class="wreckage-grid">
+                    <div class="wreckage-main">
+                        <img src="TractorWreck1.jpg" alt="Overhead view - chassis completely split in two">
                     </div>
-                    <div class="gallery-indicators">
-                        <div class="indicator active"></div>
-                        <div class="indicator"></div>
-                        <div class="indicator"></div>
+                    <div class="wreckage-top-right">
+                        <img src="TractorWreck2.jpg" alt="Side view showing the separated chassis sections">
+                    </div>
+                    <div class="wreckage-bottom-right">
+                        <img src="TractorWreck3.jpg" alt="The broken tractor being prepared for removal">
                     </div>
                 </div>
                 
@@ -257,38 +250,5 @@
     </footer>
 
     <script src="sacred-theme.js?v=2"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let currentSlide = 0;
-            const slides = document.querySelectorAll('.gallery-slide');
-            const indicators = document.querySelectorAll('.indicator');
-            
-            function showSlide(index) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                indicators.forEach(indicator => indicator.classList.remove('active'));
-                
-                if (slides[index] && indicators[index]) {
-                    slides[index].classList.add('active');
-                    indicators[index].classList.add('active');
-                }
-            }
-            
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
-            
-            if (slides.length > 0) {
-                setInterval(nextSlide, 4000);
-                
-                indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => {
-                        currentSlide = index;
-                        showSlide(currentSlide);
-                    });
-                });
-            }
-        });
-    </script>
 </body>
 </html>

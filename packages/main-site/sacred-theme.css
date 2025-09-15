@@ -1000,52 +1000,85 @@ li strong {
     border-radius: var(--border-radius);
 }
 
-/* Wreckage gallery styles */
-.wreckage-gallery {
-    margin: var(--space-lg) 0;
+/* Wreckage grid styles */
+.wreckage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+    height: 500px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
 }
 
-.gallery-container {
-    position: relative;
-    max-width: 600px;
-    margin: 0 auto;
+.wreckage-main {
+    grid-row: 1 / 3;
+    grid-column: 1;
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-medium);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
 }
 
-.gallery-slide {
-    display: none;
+.wreckage-top-right {
+    grid-row: 1;
+    grid-column: 2;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
 }
 
-.gallery-slide.active {
-    display: block;
+.wreckage-bottom-right {
+    grid-row: 2;
+    grid-column: 2;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
 }
 
-.gallery-slide img {
+.wreckage-grid img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-.gallery-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: var(--space-md);
+.wreckage-grid img:hover {
+    transform: scale(1.05);
 }
 
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(212, 175, 55, 0.3);
-    cursor: pointer;
-    transition: var(--transition);
-}
+/* Responsive adjustments for wreckage grid */
+@media (max-width: 768px) {
+    .wreckage-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        height: auto;
+        gap: var(--space-sm);
+    }
 
-.indicator.active {
-    background: var(--primary-gold);
+    .wreckage-main {
+        grid-row: 1;
+        grid-column: 1;
+        aspect-ratio: 3/4;
+    }
+
+    .wreckage-top-right {
+        grid-row: 2;
+        grid-column: 1;
+        aspect-ratio: 16/9;
+    }
+
+    .wreckage-bottom-right {
+        grid-row: 3;
+        grid-column: 1;
+        aspect-ratio: 16/9;
+    }
 }
 
 /* Donation form */
