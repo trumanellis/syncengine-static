@@ -131,7 +131,10 @@
                 <p class="body-text">It started making a weird noise — so he parked it.</p>
                 
                 <p class="body-text">Tries to move it again and boom. Chassis cracks in two  -the tractor crashes in on itself.</p>
-                
+
+                <!-- Test button for modal -->
+                <button onclick="openModal('TractorWreck1.jpg', 'Test modal')" style="margin-bottom: 20px; padding: 10px; background: #a7c080; color: white; border: none; border-radius: 5px;">Test Modal</button>
+
                 <div class="wreckage-grid">
                     <div class="wreckage-main">
                         <img src="TractorWreck1.jpg" alt="Overhead view - chassis completely split in two">
@@ -249,6 +252,156 @@
         </div>
     </footer>
 
+    <!-- Photo Modal -->
+    <div id="photoModal" class="photo-modal">
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+        </div>
+    </div>
+
     <script src="sacred-theme.js?v=2"></script>
+    <script>
+        // Photo modal functionality
+        function openModal(imgSrc, altText) {
+            console.log('openModal called with:', imgSrc, altText);
+            const modal = document.getElementById('photoModal');
+            const modalImage = document.getElementById('modalImage');
+
+            console.log('Modal elements:', modal, modalImage);
+
+            modalImage.src = imgSrc;
+            modalImage.alt = altText;
+
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            console.log('Modal should be visible now');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('photoModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Add click handlers to wreckage grid images
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOMContentLoaded fired');
+            const wreckageImages = document.querySelectorAll('.wreckage-grid img');
+            console.log('Found', wreckageImages.length, 'wreckage images');
+            wreckageImages.forEach((img, index) => {
+                console.log('Image', index, ':', img.src, img.alt);
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function(e) {
+                    console.log('Image clicked:', this.src, this.alt);
+                    e.preventDefault();
+                    openModal(this.src, this.alt);
+                });
+            });
+        });
+
+        // Close modal when clicking outside the image
+        document.getElementById('photoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+
+    <style>
+        /* Photo Modal Styles */
+        .photo-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .photo-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 70%;
+            max-height: 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--sage, #a7c080);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-light, #d3c6aa);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+
+        /* Make wreckage grid images hoverable */
+        .wreckage-grid img {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .wreckage-grid img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* Responsive modal */
+        @media (max-width: 768px) {
+            .modal-close {
+                top: -40px;
+                right: -40px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </body>
 </html>
