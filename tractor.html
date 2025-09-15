@@ -131,9 +131,9 @@
                 <p class="body-text">It started making a weird noise — so he parked it.</p>
                 
                 <p class="body-text">Tries to move it again and boom. Chassis cracks in two  -the tractor crashes in on itself.</p>
-                
+
                 <!-- Test button for modal -->
-                <button onclick="openModal('TractorWreck1.jpg', 'Test modal')" style="margin-bottom: 20px; padding: 10px; background: var(--sage); color: white; border: none; border-radius: 5px;">Test Modal</button>
+                <button onclick="openModal('TractorWreck1.jpg', 'Test modal')" style="margin-bottom: 20px; padding: 10px; background: #a7c080; color: white; border: none; border-radius: 5px;">Test Modal</button>
 
                 <div class="wreckage-grid">
                     <div class="wreckage-main">
@@ -257,7 +257,6 @@
         <div class="modal-content">
             <img id="modalImage" class="modal-image" src="" alt="">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <div id="modalCaption" class="modal-caption"></div>
         </div>
     </div>
 
@@ -268,13 +267,11 @@
             console.log('openModal called with:', imgSrc, altText);
             const modal = document.getElementById('photoModal');
             const modalImage = document.getElementById('modalImage');
-            const modalCaption = document.getElementById('modalCaption');
 
-            console.log('Modal elements:', modal, modalImage, modalCaption);
+            console.log('Modal elements:', modal, modalImage);
 
             modalImage.src = imgSrc;
             modalImage.alt = altText;
-            modalCaption.textContent = altText;
 
             modal.classList.add('show');
             document.body.style.overflow = 'hidden';
@@ -344,8 +341,8 @@
 
         .modal-content {
             position: relative;
-            max-width: 95%;
-            max-height: 95%;
+            max-width: 70%;
+            max-height: 70%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -384,20 +381,6 @@
             transform: scale(1.1);
         }
 
-        .modal-caption {
-            position: absolute;
-            bottom: -60px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: var(--text-light, #d3c6aa);
-            font-size: 1.1rem;
-            background: rgba(45, 53, 59, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 1rem;
-            border-radius: 10px;
-        }
 
         /* Make wreckage grid images hoverable */
         .wreckage-grid img {
@@ -417,11 +400,6 @@
                 width: 40px;
                 height: 40px;
                 font-size: 1.2rem;
-            }
-
-            .modal-caption {
-                font-size: 1rem;
-                bottom: -50px;
             }
         }
     </style>
