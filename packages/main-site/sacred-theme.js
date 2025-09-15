@@ -32,19 +32,52 @@ function createNavigation() {
     
     // Replace the existing nav with our complete structure
     nav.parentNode.replaceChild(navContainer, nav);
-    
+
     // Set active state based on current page
     const currentPath = window.location.pathname;
     const navLinks = navContainer.querySelectorAll('ul.nav-links a');
-    
+
     navLinks.forEach(link => {
         const linkPath = link.getAttribute('href');
-        if (linkPath === currentPath || 
+        if (linkPath === currentPath ||
             (currentPath === '/' && linkPath === '/') ||
             (currentPath.includes('tractor') && linkPath.includes('tractor'))) {
             link.parentElement.classList.add('active');
         }
     });
+
+    // Add mobile menu toggle functionality
+    const mobileToggle = navContainer.querySelector('.mobile-menu-toggle');
+    const navLinksContainer = navContainer.querySelector('.nav-links');
+
+    if (mobileToggle && navLinksContainer) {
+        console.log('Mobile menu elements found:', mobileToggle, navLinksContainer);
+
+        mobileToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Mobile toggle clicked');
+            navLinksContainer.classList.toggle('mobile-active');
+            mobileToggle.classList.toggle('active');
+            console.log('Mobile active state:', navLinksContainer.classList.contains('mobile-active'));
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksContainer.classList.remove('mobile-active');
+                mobileToggle.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!navContainer.contains(event.target)) {
+                navLinksContainer.classList.remove('mobile-active');
+                mobileToggle.classList.remove('active');
+            }
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
