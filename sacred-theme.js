@@ -5,11 +5,11 @@
 function createNavigation() {
     const nav = document.querySelector('nav.nav, #main-nav');
     if (!nav) return;
-    
+
     // Create the complete navigation structure
     const navContainer = document.createElement('div');
     navContainer.className = 'nav-container';
-    
+
     const navElement = document.createElement('nav');
     navElement.className = 'nav';
     
@@ -27,29 +27,59 @@ function createNavigation() {
         </ul>
         <button class="mobile-menu-toggle">☰</button>
     `;
-    
+
     navContainer.appendChild(navElement);
-    
+
     // Replace the existing nav with our complete structure
     nav.parentNode.replaceChild(navContainer, nav);
-    
+
     // Set active state based on current page
     const currentPath = window.location.pathname;
     const navLinks = navContainer.querySelectorAll('ul.nav-links a');
-    
+
     navLinks.forEach(link => {
         const linkPath = link.getAttribute('href');
-        if (linkPath === currentPath || 
+        if (linkPath === currentPath ||
             (currentPath === '/' && linkPath === '/') ||
             (currentPath.includes('tractor') && linkPath.includes('tractor'))) {
             link.parentElement.classList.add('active');
         }
     });
+
+    // Add mobile menu toggle functionality
+    const mobileToggle = navContainer.querySelector('.mobile-menu-toggle');
+    const navLinksContainer = navContainer.querySelector('.nav-links');
+
+    if (mobileToggle && navLinksContainer) {
+        mobileToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            navLinksContainer.classList.toggle('mobile-active');
+            mobileToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksContainer.classList.remove('mobile-active');
+                mobileToggle.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!navContainer.contains(event.target)) {
+                navLinksContainer.classList.remove('mobile-active');
+                mobileToggle.classList.remove('active');
+            }
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize centralized navigation
     createNavigation();
+
     // Navigation scroll effects
     const nav = document.querySelector('.nav');
     
