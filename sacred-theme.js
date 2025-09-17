@@ -21,8 +21,8 @@ function createNavigation() {
 
         navElement.innerHTML = `
             <a href="index.html" class="logo" aria-label="Synchronicity Engine Homepage">
-                <img src="logo-triquetra.png" alt="Synchronicity Engine - Triquetra Logo" class="logo-image" width="32" height="32">
-                Synchronicity Engine
+                <img src="logo-triquetra.png" alt="Synchronicity Engine - Triquetra Logo" class="logo-image" width="64" height="64">
+                <span class="logo-text">Synchronicity<br>Engine</span>
             </a>
             <ul class="nav-links" role="menubar">
                 <li role="none"><a href="index.html" role="menuitem">Home</a></li>
