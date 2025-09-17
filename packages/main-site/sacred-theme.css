@@ -883,7 +883,10 @@ li strong {
     }
 
     .nav-links.mobile-active {
-        display: flex;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: translateX(-50%) translateY(0) !important;
     }
 
     .nav-links li {

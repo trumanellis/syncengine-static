@@ -5,11 +5,11 @@
 function createNavigation() {
     const nav = document.querySelector('nav.nav, #main-nav');
     if (!nav) return;
-    
+
     // Create the complete navigation structure
     const navContainer = document.createElement('div');
     navContainer.className = 'nav-container';
-    
+
     const navElement = document.createElement('nav');
     navElement.className = 'nav';
     
@@ -27,9 +27,9 @@ function createNavigation() {
         </ul>
         <button class="mobile-menu-toggle">☰</button>
     `;
-    
+
     navContainer.appendChild(navElement);
-    
+
     // Replace the existing nav with our complete structure
     nav.parentNode.replaceChild(navContainer, nav);
 
@@ -51,15 +51,11 @@ function createNavigation() {
     const navLinksContainer = navContainer.querySelector('.nav-links');
 
     if (mobileToggle && navLinksContainer) {
-        console.log('Mobile menu elements found:', mobileToggle, navLinksContainer);
-
         mobileToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Mobile toggle clicked');
             navLinksContainer.classList.toggle('mobile-active');
             mobileToggle.classList.toggle('active');
-            console.log('Mobile active state:', navLinksContainer.classList.contains('mobile-active'));
         });
 
         // Close mobile menu when clicking on a link
@@ -83,6 +79,7 @@ function createNavigation() {
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize centralized navigation
     createNavigation();
+
     // Navigation scroll effects
     const nav = document.querySelector('.nav');
     
