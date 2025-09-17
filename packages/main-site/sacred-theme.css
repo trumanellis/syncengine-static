@@ -105,6 +105,10 @@ body {
     filter: brightness(1.1);
 }
 
+.logo-text {
+    line-height: 1.2;
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;

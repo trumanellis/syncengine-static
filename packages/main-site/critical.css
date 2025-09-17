@@ -116,6 +116,10 @@ body {
     margin-right: 0.5rem;
 }
 
+.logo-text {
+    line-height: 1.2;
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
