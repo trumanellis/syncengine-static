@@ -92,17 +92,17 @@ body {
     gap: 0.5rem;
 }
 
-.logo-symbol {
+.logo-image {
     width: 32px;
     height: 32px;
-    background: linear-gradient(135deg, var(--primary-gold), var(--sage-green));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 700;
-    font-size: 0.9rem;
+    object-fit: contain;
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover .logo-image {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 .nav-links {
@@ -552,25 +552,6 @@ li strong {
     transform: rotate(90deg);
 }
 
-/* Scroll indicator */
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--text-light);
-    font-size: 0.9rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    opacity: 0.7;
-}
-
-.scroll-indicator::after {
-    content: '↓';
-    animation: bounce 2s infinite;
-}
 
 /* Animations */
 @keyframes fadeInUp {
@@ -610,7 +591,6 @@ li strong {
 .hero-description { animation-delay: calc(var(--animation-delay-base) * 6); }
 .hero-buttons, .btn-group { animation-delay: calc(var(--animation-delay-base) * 7); }
 .philosophy-quote { animation-delay: calc(var(--animation-delay-base) * 8); }
-.scroll-indicator { animation-delay: calc(var(--animation-delay-base) * 9); }
 
 /* Section cascade */
 .section:nth-of-type(1) { animation-delay: calc(var(--animation-delay-base) * 10); }
@@ -1070,23 +1050,6 @@ li strong {
 }
 
 /* Accessibility utilities */
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 6px;
-    background: var(--primary-gold);
-    color: var(--deep-green);
-    padding: 8px;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 600;
-    z-index: 1000;
-    transition: top 0.3s ease;
-}
-
-.skip-link:focus {
-    top: 6px;
-}
 
 .sr-only {
     position: absolute;

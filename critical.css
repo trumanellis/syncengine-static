@@ -109,17 +109,11 @@ body {
     gap: 0.5rem;
 }
 
-.logo-symbol {
+.logo-image {
     width: 32px;
     height: 32px;
-    background: linear-gradient(135deg, var(--primary-gold), var(--sage-green));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 700;
-    font-size: 0.9rem;
+    object-fit: contain;
+    margin-right: 0.5rem;
 }
 
 .nav-links {
