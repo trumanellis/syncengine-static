@@ -1615,14 +1615,20 @@ canvas {
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-soft);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tech-image img {
-    width: 100%;
+    width: auto;
     height: auto;
     object-fit: contain;
     display: block;
-    max-height: 300px;
+    max-height: 250px;
+    max-width: 100%;
+    border-radius: var(--border-radius);
 }
 
 @media (max-width: 768px) {
