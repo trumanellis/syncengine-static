@@ -7,19 +7,10 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
     - name: Checkout
@@ -31,11 +22,11 @@ jobs:
         node-version: '18'
         cache: 'npm'
 
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Build and validate
+    - name: Install and build
       run: |
+        echo "🔄 Installing dependencies..."
+        npm ci
+
         echo "🔄 Building from simplified structure..."
         npm run build
 
@@ -46,22 +37,23 @@ jobs:
 
         echo "✅ Build completed with validations!"
 
-    - name: Setup Pages
-      uses: actions/configure-pages@v3
-
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: '.'
-
     - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2
-
-    - name: Verify deployment
       run: |
-        echo "🔍 Verifying deployment..."
-        echo "✅ Deployment completed successfully!"
+        echo "🚀 Configuring git..."
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+        echo "📝 Committing built files..."
+        git add .
+        if git diff --staged --quiet; then
+          echo "ℹ️ No changes to commit"
+        else
+          git commit -m "🚀 Deploy: Update GitHub Pages"
+          echo "⬆️ Pushing to main..."
+          git push
+        fi
+
+        echo "✅ Deployment completed!"
         echo "📝 Site URL: https://syncengine.earth/"
         echo "⏳ CDN propagation may take 5-10 minutes"
 
