@@ -341,6 +341,9 @@ body {
     position: relative;
     overflow: hidden;
     text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .feature-card::before {
