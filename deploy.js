@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { copyFileSync, existsSync, readdirSync, mkdirSync } from 'fs';
+import { copyFileSync, existsSync, readdirSync, mkdirSync, readFileSync } from 'fs';
 import { resolve, extname } from 'path';
 
 console.log('Deploying files for GitHub Pages...');
@@ -72,3 +72,36 @@ if (existsSync(mediaDir)) {
 }
 
 console.log('🚀 Deployment files ready!');
+
+// Validation checks
+console.log('\n🔍 Running deployment validations...');
+
+// Check for test modal (should be removed)
+try {
+  const tractorContent = readFileSync('tractor.html', 'utf8');
+  if (tractorContent.includes('Test Modal') || tractorContent.includes('Test button')) {
+    console.error('❌ VALIDATION FAILED: Test modal still present in tractor.html');
+    process.exit(1);
+  } else {
+    console.log('✅ Test modal removed from tractor.html');
+  }
+} catch (error) {
+  console.error('❌ Could not validate tractor.html:', error.message);
+  process.exit(1);
+}
+
+// Check Eden Game button link
+try {
+  const edenGameContent = readFileSync('eden-game.html', 'utf8');
+  if (edenGameContent.includes('href="/agua-lila.html"') && edenGameContent.includes('Start with Água Lila')) {
+    console.log('✅ Eden Game button links correctly');
+  } else {
+    console.error('❌ VALIDATION FAILED: Eden Game button link incorrect');
+    process.exit(1);
+  }
+} catch (error) {
+  console.error('❌ Could not validate eden-game.html:', error.message);
+  process.exit(1);
+}
+
+console.log('✅ All validations passed!');

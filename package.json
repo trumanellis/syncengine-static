@@ -8,6 +8,8 @@
     "build": "node deploy.js",
     "preview": "vite preview --config packages/main-site/vite.config.js",
     "deploy": "npm run build && git add . && git commit -m 'deploy: Update GitHub Pages' && git push",
+    "verify-deployment": "node scripts/verify-deployment.js",
+    "health-check": "echo '🏥 Health check available at: https://syncengine.earth/health.html'",
     "sync-from-root": "node scripts/sync-from-root.js",
     "edit-warning": "echo '⚠️  Always edit files in packages/main-site/ not root! Use npm run sync-from-root if you edited root files.'"
   },
