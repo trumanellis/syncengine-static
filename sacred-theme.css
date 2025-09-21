@@ -206,7 +206,7 @@ body {
 .hero-subtitle {
     font-size: 1.25rem;
     color: var(--text-medium);
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
@@ -214,12 +214,19 @@ body {
 }
 
 .hero-description {
-    font-size: 1.1rem;
-    color: var(--text-medium);
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
     margin-bottom: 3rem;
-    max-width: 600px;
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.hero-description em {
+    color: var(--primary-gold);
+    font-style: normal;
+    font-weight: 600;
 }
 
 .hero-buttons, .btn-group {
@@ -529,6 +536,14 @@ li strong {
     font-style: italic;
     color: var(--light-sage);
     font-size: 1.1rem;
+}
+
+.footer-note {
+    font-size: 0.9rem !important;
+    color: var(--primary-gold) !important;
+    font-style: normal !important;
+    margin-top: 1rem;
+    opacity: 0.8;
 }
 
 /* Mobile Menu */
