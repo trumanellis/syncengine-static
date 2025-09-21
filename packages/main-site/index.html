@@ -69,32 +69,46 @@
     <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation"></nav>
 
     <main id="main-content">
-        <section class="hero" id="home" role="banner">
-            <div class="hero-container">
-                <div class="hero-badge animate-cascade">Attention → Blessing → Token → Gratitude</div>
+        <section class="hero enhanced-hero" id="home" role="banner">
+            <div class="flower" aria-hidden="true"></div>
+            <div class="particles" id="particles" aria-hidden="true"></div>
 
-                <h1 class="animate-cascade">Attention is Sacred</h1>
+            <div class="hero-container enhanced-container">
+                <div class="hero-content">
+                    <div class="eyebrow animate-cascade">
+                        <span>Synchronicity Engine</span>
+                        <span class="dotsep"></span>
+                        <span>Attention → Blessing → Token → Gratitude</span>
+                    </div>
 
-                <p class="hero-subtitle animate-cascade">
-                    The sap of life that sustains consciousness in physical form. Every click, every gaze, every breath of presence carries value.
-                </p>
+                    <h1 class="animate-cascade enhanced-title">Attention is Sacred</h1>
 
-                <p class="hero-description animate-cascade">
-                    <em>This is our axiom:</em> We build technology that honors presence. Your attention becomes a blessing, blessings fuse into tokens, tokens flow through a sacred gifting economy to fund regeneration.
-                </p>
+                    <p class="chant animate-cascade">
+                        The sap of life that sustains consciousness in physical form. Every click, every gaze, every breath of presence carries value.
+                    </p>
 
-                <div class="hero-buttons animate-cascade" role="group" aria-label="Primary actions">
-                    <a href="#features" class="btn-primary" aria-describedby="features-desc">
-                        Begin a Blessing
-                        <span aria-hidden="true">→</span>
-                    </a>
-                    <span id="features-desc" class="sr-only">Start your journey with sacred attention</span>
-                    <a href="#philosophy" class="btn-secondary" aria-describedby="philosophy-desc">Read the Manifesto</a>
-                    <span id="philosophy-desc" class="sr-only">Explore our philosophical foundations</span>
+                    <p class="mantra animate-cascade">
+                        <em>This is our axiom:</em> We build technology that honors presence. Your attention becomes a blessing, blessings fuse into tokens, tokens flow through a sacred gifting economy to fund regeneration.
+                    </p>
+
+                    <div class="cta animate-cascade" role="group" aria-label="Primary actions">
+                        <a href="#features" class="btn primary" aria-describedby="features-desc">
+                            Begin a Blessing
+                        </a>
+                        <span id="features-desc" class="sr-only">Start your journey with sacred attention</span>
+                        <a href="#philosophy" class="btn ghost" aria-describedby="philosophy-desc">Read the Manifesto</a>
+                        <span id="philosophy-desc" class="sr-only">Explore our philosophical foundations</span>
+                        <a href="#demo" class="btn ghost">See it in Action</a>
+                    </div>
+
+                    <p class="microtrust animate-cascade">A project of <strong>Temples of Refuge</strong> — a nonprofit network stewarding sovereign AI for the common good. Donations may be tax‑deductible in the U.S. and select countries.</p>
                 </div>
 
-                <div class="scroll-indicator animate-cascade" aria-hidden="true">
-                    Scroll to explore
+                <div class="hero-visual animate-cascade">
+                    <div class="vizcard">
+                        <span class="badge">Live nodefield</span>
+                        <canvas id="nodefield" aria-label="Network of intentions and gratitude flows" role="img"></canvas>
+                    </div>
                 </div>
             </div>
         </section>
@@ -407,5 +421,75 @@
     </footer>
 
     <script type="module" src="sacred-theme.js"></script>
+    <script>
+        // Enhanced Hero Particles and Animation
+        const pf = document.getElementById('particles');
+        if (pf) {
+            const DOTS = 40;
+            for(let i=0;i<DOTS;i++){
+                const d=document.createElement('span');
+                d.className='dot';
+                d.style.left = Math.random()*100+'vw';
+                d.style.bottom = (-10 + Math.random()*40)+'vh';
+                d.style.opacity = .4 + Math.random()*.6;
+                d.style.setProperty('--dur', (20 + Math.random()*30)+'s');
+                pf.appendChild(d);
+            }
+        }
+
+        // Simple node network visualization
+        const c = document.getElementById('nodefield');
+        if (c) {
+            const ctx = c.getContext('2d');
+            function resize(){
+                const r = c.parentElement.getBoundingClientRect();
+                c.width = Math.floor(r.width * devicePixelRatio);
+                c.height = Math.floor(r.height * devicePixelRatio);
+            }
+            const nodes = Array.from({length: 42}, ()=>({
+                x: Math.random(), y: Math.random(),
+                vx: (Math.random()-.5)*0.0008,
+                vy: (Math.random()-.5)*0.0008,
+                w: .6 + Math.random()*1.2
+            }));
+
+            function tick(){
+                ctx.clearRect(0,0,c.width,c.height);
+                const W=c.width, H=c.height;
+                // Links
+                ctx.globalAlpha=.45; ctx.lineWidth=1*devicePixelRatio; ctx.strokeStyle='rgba(163,247,191,.35)';
+                for(let i=0;i<nodes.length;i++){
+                    for(let j=i+1;j<nodes.length;j++){
+                        const a=nodes[i], b=nodes[j];
+                        const dx=(a.x-b.x), dy=(a.y-b.y); const d2=dx*dx+dy*dy;
+                        if(d2<0.06){
+                            ctx.beginPath();
+                            ctx.moveTo(a.x*W, a.y*H);
+                            ctx.lineTo(b.x*W, b.y*H);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                // Nodes
+                for(const n of nodes){
+                    const x=n.x*W, y=n.y*H;
+                    // halo
+                    const g=ctx.createRadialGradient(x,y,0,x,y,14*devicePixelRatio);
+                    g.addColorStop(0,'rgba(110,231,214,.55)');
+                    g.addColorStop(1,'rgba(110,231,214,0)');
+                    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,14*devicePixelRatio,0,6.283); ctx.fill();
+                    // core
+                    ctx.globalAlpha=1; ctx.fillStyle='#ecfff5';
+                    ctx.beginPath(); ctx.arc(x,y,(1.4+n.w)*devicePixelRatio,0,6.283); ctx.fill();
+                    // drift
+                    n.x+=n.vx; n.y+=n.vy;
+                    if(n.x<0||n.x>1) n.vx*=-1; if(n.y<0||n.y>1) n.vy*=-1;
+                }
+                requestAnimationFrame(tick);
+            }
+            window.addEventListener('resize', resize);
+            resize(); tick();
+        }
+    </script>
 </body>
 </html>
