@@ -201,6 +201,6 @@ Your attention is the water that brings it all to life."**
 
 *The Paradise Game begins with your first seed...*
 
-**Coming Soon - 2025**
+**Coming Soon - 2026**
 
 *"Where every backyard becomes Eden, every neighborhood becomes Paradise, and every community remembers how to live in abundance."*

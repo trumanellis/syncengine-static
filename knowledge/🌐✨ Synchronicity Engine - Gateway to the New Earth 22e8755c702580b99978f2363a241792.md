@@ -280,6 +280,6 @@ When your focused attention trains AI companions, when your monthly contribution
 
 **Your AI companion is waiting across all your devices...**
 
-*Coming Soon - 2025*
+*Coming Soon - 2026*
 
 **"Where daily intentions become AI training data, and artificial intelligence becomes the servant of personal and planetary abundance."**

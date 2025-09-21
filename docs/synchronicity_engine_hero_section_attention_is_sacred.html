@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Synchronicity Engine — Hero</title>
+  <style>
+    :root{
+      --bg-1:#0b0f13;      /* deep space */
+      --bg-2:#0f1c18;      /* forest night */
+      --glow:#a3f7bf;      /* aurora mint */
+      --gold:#f2c94c;      /* temple gold */
+      --sage:#9bb59e;      /* sage text */
+      --ink:#e8eee9;       /* light text */
+      --accent:#6ee7d6;    /* teal accent */
+      --muted:#9aa5a7;     /* muted text */
+      --btn:#e8eee9;
+      --btn-text:#0b0f13;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background: radial-gradient(1200px 800px at 20% 10%, #143026 0%, transparent 60%),
+                  radial-gradient(1000px 700px at 80% 20%, #1b1330 0%, transparent 60%),
+                  linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      overflow-x:hidden;
+    }
+
+    /* Hero Layout */
+    .hero{
+      position:relative; isolation:isolate;
+      display:grid;
+      grid-template-columns: 1fr;
+      min-height: 100dvh;
+      padding: clamp(1.5rem, 3vw, 3rem);
+      align-items:center;
+    }
+
+    .container{
+      max-width: 1200px;
+      margin-inline:auto;
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(1.5rem, 3vw, 3rem);
+    }
+
+    @media (max-width: 940px){
+      .container{grid-template-columns:1fr}
+    }
+
+    /* Sacred background geometry */
+    .flower{
+      position:absolute; inset:0; z-index:-1;
+      background-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000"><defs><pattern id="fol" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="translate(0 0)"><circle cx="30" cy="30" r="28" fill="none" stroke="%23ffffff" stroke-opacity="0.04" stroke-width="1.2"/></pattern></defs><rect width="100%" height="100%" fill="url(%23fol)"/></svg>');
+      background-size: cover;
+      mask-image: radial-gradient(60% 60% at 50% 40%, black 0%, transparent 65%);
+      opacity:.7;
+    }
+
+    /* Particles */
+    .particles{position:absolute; inset:0; pointer-events:none; overflow:hidden}
+    .dot{position:absolute; width:2px; height:2px; background:var(--glow); border-radius:50%; filter:drop-shadow(0 0 4px var(--glow)); opacity:.8; animation: float var(--dur) linear infinite;}
+    @keyframes float{
+      from{transform:translateY(110vh)} to{transform:translateY(-10vh)}
+    }
+
+    /* Left: Copy */
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:.5rem;
+      font-size:.9rem; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--sage); opacity:.9;
+    }
+    .eyebrow .dotsep{width:6px; height:6px; border-radius:50%; background:var(--gold); filter:drop-shadow(0 0 6px var(--gold));}
+
+    h1{
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height:1.02; margin: .35em 0 .2em; font-weight:800;
+      letter-spacing:-0.02em;
+      background: linear-gradient(180deg, var(--ink), #cfe7db 60%, #bfe8d9);
+      -webkit-background-clip: text; background-clip:text; color:transparent;
+      text-wrap: balance;
+    }
+
+    .chant{font-size: clamp(1.05rem, 1.5vw, 1.2rem); color:var(--sage); line-height:1.55; margin:0 0 1.1rem}
+    .mantra{font-size: clamp(1.15rem, 2vw, 1.35rem); color:#dfeee8; line-height:1.6; margin:0 0 1.6rem}
+
+    .mantra em{color:var(--gold); font-style:normal}
+
+    .cta{display:flex; flex-wrap:wrap; gap:.9rem; align-items:center; margin-top:1.2rem}
+    .btn{appearance:none; border:0; cursor:pointer; font-weight:700; text-decoration:none;}
+    .btn.primary{
+      background: radial-gradient(120% 160% at 20% 20%, var(--gold), #ffd96a 40%, #fff7d1 100%);
+      color:#1a1206; padding:.95rem 1.15rem; border-radius:14px; box-shadow:0 10px 22px rgba(242,201,76,.18), inset 0 0 0 1px rgba(0,0,0,.08);
+      transition: transform .12s ease, box-shadow .2s ease;
+    }
+    .btn.primary:hover{transform:translateY(-1px); box-shadow:0 14px 28px rgba(242,201,76,.26), inset 0 0 0 1px rgba(0,0,0,.1)}
+
+    .btn.ghost{
+      background:transparent; color:var(--ink);
+      padding:.9rem 1rem; border-radius:14px; border:1px solid rgba(167, 198, 183,.35);
+      backdrop-filter:saturate(120%) blur(6px);
+    }
+
+    .microtrust{margin-top:1.2rem; color:var(--muted); font-size:.95rem}
+    .microtrust strong{color:#eae9d9}
+
+    /* Right: Viz placeholder */
+    .vizcard{
+      position:relative;
+      aspect-ratio: 4/3;
+      border-radius: 18px;
+      background: linear-gradient(160deg, rgba(110,231,214,.12), rgba(163,247,191,.06) 40%, rgba(242,201,76,.08));
+      border:1px solid rgba(148,163,184,.25);
+      overflow:hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.02);
+    }
+    canvas{display:block; width:100%; height:100%}
+
+    .badge{
+      position:absolute; right:12px; top:12px; padding:.45rem .65rem; font-size:.8rem; border-radius:999px;
+      border:1px solid rgba(236, 253, 245,.35); color:#ecfff5; background: rgba(14, 159, 110, .15);
+      backdrop-filter: blur(4px) saturate(120%);
+    }
+
+    /* Accessibility / reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .dot{animation:none}
+    }
+  </style>
+</head>
+<body>
+  <main class="hero" aria-label="Synchronicity Engine — hero section">
+    <div class="flower" aria-hidden="true"></div>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <div class="container">
+      <!-- Copy Column -->
+      <section>
+        <div class="eyebrow"><span>Synchronicity Engine</span><span class="dotsep"></span><span>Attention → Blessing → Token → Gratitude</span></div>
+        <h1>Attention is Sacred</h1>
+        <p class="chant">The sap of life that sustains consciousness in physical form. Every click, every gaze, every breath of presence carries value.</p>
+        <p class="mantra"><em>This is our axiom:</em> We build technology that honors presence. Your attention becomes a blessing, blessings fuse into tokens, tokens flow through a sacred gifting economy to fund regeneration.</p>
+
+        <div class="cta" role="group" aria-label="Primary actions">
+          <a class="btn primary" href="#begin">Begin a Blessing</a>
+          <a class="btn ghost" href="#manifesto">Read the Manifesto</a>
+          <a class="btn ghost" href="#watch">See it in Action</a>
+        </div>
+
+        <p class="microtrust">A project of <strong>Temples of Refuge</strong> — a nonprofit network stewarding sovereign AI for the common good. Donations may be tax‑deductible in the U.S. and select countries.</p>
+      </section>
+
+      <!-- Visualization Column -->
+      <aside>
+        <div class="vizcard">
+          <span class="badge">Live nodefield</span>
+          <canvas id="nodefield" aria-label="Network of intentions and gratitude flows" role="img"></canvas>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    // Floating particle specks (lightweight, no deps)
+    const pf = document.getElementById('particles');
+    const DOTS = 40;
+    for(let i=0;i<DOTS;i++){
+      const d=document.createElement('span');
+      d.className='dot';
+      d.style.left = Math.random()*100+'vw';
+      d.style.bottom = (-10 + Math.random()*40)+'vh';
+      d.style.opacity = .4 + Math.random()*.6;
+      d.style.setProperty('--dur', (20 + Math.random()*30)+'s');
+      pf.appendChild(d);
+    }
+
+    // Simple node network placeholder (replace with real graph later)
+    const c = document.getElementById('nodefield');
+    const ctx = c.getContext('2d');
+    function resize(){
+      const r = c.parentElement.getBoundingClientRect();
+      c.width = Math.floor(r.width * devicePixelRatio);
+      c.height = Math.floor(r.height * devicePixelRatio);
+    }
+    const nodes = Array.from({length: 42}, ()=>({
+      x: Math.random(), y: Math.random(),
+      vx: (Math.random()-.5)*0.0008,
+      vy: (Math.random()-.5)*0.0008,
+      w: .6 + Math.random()*1.2
+    }));
+
+    function tick(){
+      ctx.clearRect(0,0,c.width,c.height);
+      const W=c.width, H=c.height;
+      // Links
+      ctx.globalAlpha=.45; ctx.lineWidth=1*devicePixelRatio; ctx.strokeStyle='rgba(163,247,191,.35)';
+      for(let i=0;i<nodes.length;i++){
+        for(let j=i+1;j<nodes.length;j++){
+          const a=nodes[i], b=nodes[j];
+          const dx=(a.x-b.x), dy=(a.y-b.y); const d2=dx*dx+dy*dy;
+          if(d2<0.06){
+            ctx.beginPath();
+            ctx.moveTo(a.x*W, a.y*H);
+            ctx.lineTo(b.x*W, b.y*H);
+            ctx.stroke();
+          }
+        }
+      }
+      // Nodes
+      for(const n of nodes){
+        const x=n.x*W, y=n.y*H;
+        // halo
+        const g=ctx.createRadialGradient(x,y,0,x,y,14*devicePixelRatio);
+        g.addColorStop(0,'rgba(110,231,214,.55)');
+        g.addColorStop(1,'rgba(110,231,214,0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,14*devicePixelRatio,0,6.283); ctx.fill();
+        // core
+        ctx.globalAlpha=1; ctx.fillStyle='#ecfff5';
+        ctx.beginPath(); ctx.arc(x,y,(1.4+n.w)*devicePixelRatio,0,6.283); ctx.fill();
+        // drift
+        n.x+=n.vx; n.y+=n.vy;
+        if(n.x<0||n.x>1) n.vx*=-1; if(n.y<0||n.y>1) n.vy*=-1;
+      }
+      requestAnimationFrame(tick);
+    }
+    window.addEventListener('resize', ()=>{resize()});
+    resize(); tick();
+  </script>
+</body>
+</html>
