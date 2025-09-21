@@ -12,7 +12,7 @@ console.log('🚀 Building site from simplified structure...\n');
 // Clean old files first (except critical ones)
 const filesToKeep = [
     'package.json', 'package-lock.json', '.gitignore', 'README.md',
-    '.github', 'node_modules', 'src', 'scripts', 'SIMPLIFIED-STRUCTURE.md'
+    '.github', 'node_modules', 'src', 'scripts', 'SIMPLIFIED-STRUCTURE.md', 'CNAME'
 ];
 
 console.log('🧹 Cleaning old redundant files...');
