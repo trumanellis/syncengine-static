@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -50,7 +50,7 @@ jobs:
       uses: actions/configure-pages@v3
 
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
+      uses: actions/upload-pages-artifact@v3
       with:
         path: '.'
 
@@ -65,32 +65,3 @@ jobs:
         echo "📝 Site URL: https://syncengine.earth/"
         echo "⏳ CDN propagation may take 5-10 minutes"
 
-  # Backup job that commits changes to repo (for version control)
-  commit-changes:
-    runs-on: ubuntu-latest
-    needs: build-and-deploy
-    if: always()
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-
-    - name: Install and build
-      run: |
-        npm ci
-        npm run build
-
-    - name: Commit built files
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add .
-        git commit -m "deploy: Auto-deploy from GitHub Actions" || exit 0
-        git push
