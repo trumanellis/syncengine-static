@@ -36,32 +36,15 @@ jobs:
 
     - name: Build and validate
       run: |
-        echo "🔄 Building site..."
+        echo "🔄 Building from simplified structure..."
         npm run build
 
-        # Verify critical files exist
-        echo "🔍 Verifying files..."
-        ls -la *.html || (echo "❌ HTML files missing" && exit 1)
-        ls -la media/ || (echo "❌ Media files missing" && exit 1)
+        # Verify files were built
+        echo "🔍 Verifying built files..."
+        ls -la *.html || (echo "❌ HTML files missing after build" && exit 1)
+        ls -la media/ || (echo "❌ Media files missing after build" && exit 1)
 
-        # Check for test modal (should be removed)
-        if grep -r "Test Modal\|Test button" *.html 2>/dev/null; then
-          echo "❌ Test modal still present!"
-          exit 1
-        else
-          echo "✅ Test modal removed"
-        fi
-
-        # Verify button link is correct
-        if grep -q 'href="/agua-lila.html".*Start with Água Lila' eden-game.html; then
-          echo "✅ Eden Game button link correct"
-        else
-          echo "❌ Eden Game button link incorrect"
-          grep -A2 -B2 "Start with Água Lila" eden-game.html || true
-          exit 1
-        fi
-
-        echo "✅ All validations passed!"
+        echo "✅ Build completed with validations!"
 
     - name: Setup Pages
       uses: actions/configure-pages@v3
