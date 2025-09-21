@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="sacred-theme.css">
+    <link rel="stylesheet" href="sacred-theme.css?v=5">
 </head>
 <body class="dark-section eden-game-page">
     <!-- Blessing Particles -->
@@ -18,8 +18,8 @@
 
     <nav class="nav" id="main-nav"></nav>
 
-    <main id="main-content">
-        <section class="hero" id="home" role="banner">
+    <main id="main-content" role="main">
+        <header class="hero" id="home" role="banner">
             <div class="hero-container">
                 <div class="hero-badge animate-cascade">Paradise Restoration Game</div>
 
@@ -30,18 +30,18 @@
                 </p>
 
                 <div class="hero-buttons animate-cascade">
-                    <a href="#how-to-start" class="btn-primary">
+                    <a href="/tractor.html" class="btn-primary">
                         Start Playing Now
                         <span>→</span>
                     </a>
                     <a href="/agua-lila.html" class="btn-secondary">See Paradise in Action</a>
                 </div>
             </div>
-        </section>
+        </header>
 
         <!-- Success Story -->
         <section class="features animate-cascade">
-            <div class="features-container">
+            <div class="container">
                 <div class="section-header">
                     <div class="section-badge">🌱 Real Example</div>
                     <h2 class="section-title">It's Already Happening</h2>
@@ -50,19 +50,13 @@
                     </p>
                 </div>
 
-                <div class="featured-card" style="background: linear-gradient(135deg, var(--earth-green) 0%, var(--deep-green) 100%); color: white; padding: 2rem; border-radius: 16px; margin: 2rem 0;">
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: center;">
+                <div class="tractor-fund-card">
+                    <div class="tractor-fund-content">
                         <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">🚜 The Água Lila Tractor Fund</h3>
-                            <p style="margin-bottom: 1rem; line-height: 1.6;">Community intention: "Get a safer tractor to clear invasive eucalyptus and plant food forests."</p>
-                            <p style="margin-bottom: 1.5rem; opacity: 0.9;">Supporters from around the world directed their attention to this regeneration project. Each dollar donated becomes a token of gratitude for land healing work.</p>
-                            <a href="/tractor.html" class="btn-secondary" style="background: white; color: var(--deep-green);">Support This Intention →</a>
-                        </div>
-                        <div style="text-align: center;">
-                            <div style="background: rgba(255,255,255,0.2); padding: 1.5rem; border-radius: 12px;">
-                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">65%</div>
-                                <div>Funded</div>
-                            </div>
+                            <h3 class="tractor-fund-title">🚜 The Água Lila Tractor Fund</h3>
+                            <p class="tractor-intention">"I slam the breaks and drop the bucket to stop the tractor from driving off the edge. I'm shook. Annabelle was newly pregnant and I didn't want to die before meeting my daughter."</p>
+                            <p class="tractor-description">From Dr. Truman at Templo de Água Lila: Our faithful Little Orange Kubota finally gave its life for the cause. Now we need your help to get a safer tractor with a roll bar—because this sacred work of regenerating paradise can't wait.</p>
+                            <a href="/tractor.html" class="btn-tractor-support">Read the Full Story →</a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +65,7 @@
 
         <!-- What It Is -->
         <section class="features animate-cascade" id="what-it-is">
-            <div class="features-container">
+            <div class="container">
                 <div class="section-header">
                     <div class="section-badge">✨ What It Is</div>
                     <h2 class="section-title">A Living System</h2>
@@ -110,7 +104,7 @@
 
         <!-- How It Works -->
         <section class="features animate-cascade" id="how-it-works">
-            <div class="features-container">
+            <div class="container">
                 <div class="section-header">
                     <div class="section-badge">🌟 How It Works</div>
                     <h2 class="section-title">The Sacred Process</h2>
@@ -178,31 +172,31 @@
                     <h2 class="section-heading">🗺 Global Stewardship Map</h2>
                     <p class="body-text">Every completed action creates a geotagged token, building a living map of planetary regeneration:</p>
 
-                    <div class="featured-card" style="margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, var(--soft-gold) 0%, var(--light-cream) 100%); border: 2px solid var(--primary-gold);">
-                        <div class="tech-image" style="margin: 0 0 2rem 0;">
-                            <img src="media/GratitudeMap.jpg?v=2" alt="Global map showing stewardship locations with colorful nodes representing regenerative projects worldwide" loading="lazy">
+                    <div class="stewardship-map-card">
+                        <div class="tech-image">
+                            <img src="media/GlowingNetwork.png" alt="Glowing network visualization showing interconnected nodes representing the global stewardship network" loading="lazy">
                         </div>
 
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                            <div style="background: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--earth-green);">
-                                <h4 style="color: var(--earth-green); margin-bottom: 1rem; display: flex; align-items: center;">
-                                    <span style="font-size: 1.5rem; margin-right: 0.5rem;">🌟</span>
+                        <div class="stewardship-features-grid">
+                            <div class="stewardship-feature-card bright-tokens">
+                                <h4 class="stewardship-feature-title">
+                                    <span class="stewardship-feature-icon">🌟</span>
                                     Bright Tokens
                                 </h4>
                                 <p>High-impact actions blessed by their communities shine as golden nodes—like Água Lila's forest restoration glowing in Portugal.</p>
                             </div>
 
-                            <div style="background: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--honey-gold);">
-                                <h4 style="color: var(--honey-gold); margin-bottom: 1rem; display: flex; align-items: center;">
-                                    <span style="font-size: 1.5rem; margin-right: 0.5rem;">⚡</span>
+                            <div class="stewardship-feature-card living-network">
+                                <h4 class="stewardship-feature-title">
+                                    <span class="stewardship-feature-icon">⚡</span>
                                     Living Network
                                 </h4>
                                 <p>Real-time updates show new intentions emerging and actions completing across the Temple network worldwide.</p>
                             </div>
 
-                            <div style="background: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--deep-green);">
-                                <h4 style="color: var(--deep-green); margin-bottom: 1rem; display: flex; align-items: center;">
-                                    <span style="font-size: 1.5rem; margin-right: 0.5rem;">🌐</span>
+                            <div class="stewardship-feature-card growing-web">
+                                <h4 class="stewardship-feature-title">
+                                    <span class="stewardship-feature-icon">🌐</span>
                                     Growing Web
                                 </h4>
                                 <p>Successful stewardship creates patterns of regeneration—valleys healing, communities thriving, connections strengthening.</p>
@@ -213,61 +207,31 @@
             </div>
         </section>
 
-        <!-- How to Start -->
-        <section class="philosophy animate-cascade" id="how-to-start">
-            <div class="philosophy-container">
-                <div class="section-badge">🚀 How to Start Playing</div>
-                <h2 class="section-title">Your First Steps in Eden</h2>
-                <p class="section-description">
-                    Ready to turn your attention into regenerative action? Here's how to begin:
-                </p>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 3rem 0;">
-                    <div style="background: var(--light-cream); padding: 2rem; border-radius: 16px; border-left: 4px solid var(--primary-gold);">
-                        <h3 style="color: var(--deep-green); margin-bottom: 1rem;">1. 🎯 Choose Your Focus</h3>
-                        <p style="margin-bottom: 1rem;">Browse active intentions at our Temples. Start with <strong>Água Lila's tractor fund</strong>—a concrete way to support land regeneration in Portugal.</p>
-                        <a href="/tractor.html" class="btn-secondary">Support Tractor Fund</a>
-                    </div>
-
-                    <div style="background: var(--light-cream); padding: 2rem; border-radius: 16px; border-left: 4px solid var(--earth-green);">
-                        <h3 style="color: var(--deep-green); margin-bottom: 1rem;">2. 🏛️ Connect with a Temple</h3>
-                        <p style="margin-bottom: 1rem;">Join the Temple network as a steward. Learn about regenerative practices and find your tribe of earth healers.</p>
-                        <a href="/temples.html" class="btn-secondary">Explore Temples</a>
-                    </div>
-
-                    <div style="background: var(--light-cream); padding: 2rem; border-radius: 16px; border-left: 4px solid var(--honey-gold);">
-                        <h3 style="color: var(--deep-green); margin-bottom: 1rem;">3. 📖 Understand the Vision</h3>
-                        <p style="margin-bottom: 1rem;">Read our 22 beliefs to understand the spiritual and practical foundation of this sacred work.</p>
-                        <a href="https://aeonmyths.substack.com" target="_blank" class="btn-secondary">Read Our Beliefs</a>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- FAQ -->
         <section class="section animate-cascade">
             <div class="container">
                 <div class="card">
-                    <h2 class="section-heading">🤔 Common Questions</h2>
+                    <h2 class="section-heading">🤔 Frequently Asked Questions</h2>
 
-                    <div style="display: grid; gap: 2rem; margin-top: 2rem;">
-                        <div style="background: var(--light-cream); padding: 1.5rem; border-radius: 12px;">
-                            <h4 style="color: var(--deep-green); margin-bottom: 0.5rem;">How do I know my contributions actually help?</h4>
+                    <div class="eden-faq-grid">
+                        <div class="eden-faq-item">
+                            <h4 class="faq-question">How do I know my contributions actually help?</h4>
                             <p>Every donation and action is documented with photos, updates, and transparent reporting. Visit Água Lila's progress or follow our Substack for regular Temple updates.</p>
                         </div>
 
-                        <div style="background: var(--light-cream); padding: 1.5rem; border-radius: 12px;">
-                            <h4 style="color: var(--deep-green); margin-bottom: 0.5rem;">What if I can't visit a Temple in person?</h4>
+                        <div class="eden-faq-item">
+                            <h4 class="faq-question">What if I can't visit a Temple in person?</h4>
                             <p>You can participate remotely by supporting intentions financially, sharing the vision, or starting regenerative work in your own location. Every action matters.</p>
                         </div>
 
-                        <div style="background: var(--light-cream); padding: 1.5rem; border-radius: 12px;">
-                            <h4 style="color: var(--deep-green); margin-bottom: 0.5rem;">Is this connected to any specific religion?</h4>
+                        <div class="eden-faq-item">
+                            <h4 class="faq-question">Is this connected to any specific religion?</h4>
                             <p>While we use sacred language and operate as a 508(c)(1)(A) religious nonprofit, we welcome people of all faiths united by love for Earth and humanity.</p>
                         </div>
 
-                        <div style="background: var(--light-cream); padding: 1.5rem; border-radius: 12px;">
-                            <h4 style="color: var(--deep-green); margin-bottom: 0.5rem;">How are tokens different from regular cryptocurrency?</h4>
+                        <div class="eden-faq-item">
+                            <h4 class="faq-question">How are tokens different from regular cryptocurrency?</h4>
                             <p>Tokens of Gratitude are backed by verified regenerative actions, not speculation. They represent real work done to heal the planet, creating inherent value.</p>
                         </div>
                     </div>
@@ -284,11 +248,11 @@
                     This isn't just software—it's a collective spell for planetary healing. When human attention aligns with regenerative action, miracles become inevitable.
                 </p>
 
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="/tractor.html" class="btn-primary" style="font-size: 1.2rem; padding: 1rem 2rem; margin-right: 1rem;">
+                <div class="final-cta-buttons">
+                    <a href="/agua-lila.html" class="btn-primary btn-large">
                         🌱 Start with Água Lila
                     </a>
-                    <a href="/temples.html" class="btn-secondary" style="font-size: 1.2rem; padding: 1rem 2rem;">
+                    <a href="/temples.html" class="btn-secondary btn-large">
                         🏛️ Explore All Temples
                     </a>
                 </div>

@@ -8,6 +8,9 @@
     --forest-green: #2D5A3D;
     --sage-green: #52796F;
     --light-sage: #84A98C;
+    --earth-green: #2D6A4F;
+    --honey-gold: #F4B942;
+    --light-cream: #F7F3E9;
     --cream: #FAF7F0;
     --warm-white: #FEFCF7;
     --soft-gold: #F4E9D1;
@@ -1060,6 +1063,377 @@ li strong {
 .eden-game-page .features#what-it-is { animation-delay: 1.0s !important; }
 .eden-game-page .philosophy#game-of-harmony { animation-delay: 1.2s !important; }
 .eden-game-page .features#how-it-works { animation-delay: 1.4s !important; }
+.eden-game-page .features#how-to-start { animation-delay: 1.6s !important; }
+
+
+/* Eden Game Specific Styles */
+/* Tractor Fund Card */
+.tractor-fund-card {
+    background: linear-gradient(135deg, var(--earth-green) 0%, var(--deep-green) 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.tractor-fund-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(27, 67, 50, 0.3);
+}
+
+.tractor-fund-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.tractor-fund-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.tractor-intention {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.tractor-description {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.btn-tractor-support {
+    background: white;
+    color: var(--deep-green);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-tractor-support:hover {
+    background: var(--light-cream);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.tractor-progress-container {
+    text-align: center;
+}
+
+.tractor-progress-card {
+    background: rgba(255,255,255,0.2);
+    padding: 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.progress-percentage {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+}
+
+.progress-text {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Stewardship Map Card */
+.stewardship-map-card {
+    margin: 3rem 0;
+    padding: 400px 2rem 2rem 2rem;
+    background: linear-gradient(135deg, var(--soft-gold) 0%, var(--light-cream) 100%);
+    border: 2px solid var(--primary-gold);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+    position: relative;
+    max-width: 100%;
+}
+
+/* Make stewardship map image absolutely positioned to span full card width */
+.stewardship-map-card .tech-image {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    border: none !important;
+    z-index: 1 !important;
+}
+
+.stewardship-map-card .tech-image img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 380px !important;
+    max-height: 380px !important;
+    object-fit: cover !important;
+    border-radius: var(--border-radius-large) var(--border-radius-large) 0 0 !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transition: transform 0.3s ease !important;
+    display: block !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+
+
+.stewardship-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stewardship-feature-card {
+    background: rgba(255,255,255,0.9);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.stewardship-feature-card.bright-tokens {
+    border-left: 4px solid var(--earth-green);
+}
+
+.stewardship-feature-card.living-network {
+    border-left: 4px solid var(--honey-gold);
+}
+
+.stewardship-feature-card.growing-web {
+    border-left: 4px solid var(--deep-green);
+}
+
+.stewardship-feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+}
+
+.stewardship-feature-title {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.bright-tokens .stewardship-feature-title {
+    color: var(--earth-green);
+}
+
+.living-network .stewardship-feature-title {
+    color: var(--honey-gold);
+}
+
+.growing-web .stewardship-feature-title {
+    color: var(--deep-green);
+}
+
+.stewardship-feature-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+
+/* FAQ Grid */
+.eden-faq-grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.eden-faq-item {
+    background: var(--light-cream);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: var(--transition);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.eden-faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+    border-color: var(--primary-gold);
+}
+
+.faq-question {
+    color: var(--deep-green);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.eden-faq-item p {
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Final CTA Buttons */
+.final-cta-buttons {
+    text-align: center;
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-large {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    font-weight: 600;
+}
+
+/* Additional visual polish */
+
+.tractor-fund-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-gold), var(--honey-gold));
+    opacity: 0.8;
+}
+
+.stewardship-map-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.stewardship-map-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-gold), var(--sage-green));
+    opacity: 0.8;
+}
+
+.tech-image {
+    margin-bottom: 2rem;
+}
+
+.tech-image img {
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.tech-image img:hover {
+    transform: scale(1.02);
+}
+
+/* Improved spacing and typography */
+.section-badge {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hero h1 {
+    background: linear-gradient(135deg, var(--deep-green), var(--forest-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Focus states for better accessibility */
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-tractor-support:focus-visible {
+    outline: 3px solid var(--primary-gold);
+    outline-offset: 2px;
+}
+
+/* Eden Game Mobile Responsiveness */
+@media (max-width: 768px) {
+    .tractor-fund-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .tractor-progress-container {
+        order: -1;
+        margin-bottom: 1rem;
+    }
+
+    .stewardship-features-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stewardship-map-card {
+        padding: 300px 1rem 2rem 1rem !important;
+        max-width: calc(100vw - 2rem) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .stewardship-map-card .tech-image img {
+        min-height: 280px !important;
+        max-height: 280px !important;
+    }
+
+
+    .final-cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .btn-large {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+    }
+}
 
 /* Continue the cascade for the remaining eden game sections */
 .eden-game-page .section:nth-of-type(5) { animation-delay: 1.6s !important; } /* Stewardship Map section */
@@ -1511,8 +1885,14 @@ li strong {
     border-radius: 4px;
 }
 
-/* Image loading states */
-img[data-src],
+/* Image loading states - only apply to images with data-src (true lazy loading) */
+img[data-src] {
+    opacity: 0;
+    filter: blur(5px);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    background: var(--soft-gold);
+}
+
 img.loading {
     opacity: 0;
     filter: blur(5px);
@@ -1529,6 +1909,12 @@ img.error {
     opacity: 0.5;
     filter: grayscale(1);
     background: var(--text-light);
+}
+
+/* Ensure regular images with loading="lazy" are not affected by loading states */
+img[loading="lazy"]:not([data-src]):not(.loading) {
+    opacity: 1 !important;
+    filter: none !important;
 }
 
 /* Performance optimizations */
@@ -1626,7 +2012,7 @@ canvas {
     height: auto;
     object-fit: contain;
     display: block;
-    max-height: 250px;
+    max-height: 400px;
     max-width: 100%;
     border-radius: var(--border-radius);
 }
