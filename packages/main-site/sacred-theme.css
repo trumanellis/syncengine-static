@@ -604,7 +604,7 @@ li strong {
 }
 
 .demo-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
@@ -613,28 +613,209 @@ li strong {
     margin-top: 3rem;
 }
 
-.demo-info h3 {
+.demo-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.demo-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.challenge-card {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: var(--border-radius-large);
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition);
+}
+
+.challenge-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+}
+
+.challenge-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.challenge-icon {
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+.challenge-info h3 {
     font-family: var(--font-heading);
     font-size: 1.75rem;
     color: var(--deep-green);
-    margin: 2rem 0 1rem 0;
+    margin: 0 0 0.5rem 0;
 }
 
-.demo-info ul {
-    margin: 1.5rem 0;
-    padding-left: 1.5rem;
+.urgency-badge {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
 }
 
-.demo-info li {
-    margin-bottom: 0.75rem;
-    line-height: 1.6;
+.challenge-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+}
+
+.progress-indicator {
+    margin-top: 1.5rem;
+}
+
+.progress-label {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--forest-green);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.progress-bar {
+    background: rgba(212, 175, 55, 0.2);
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, var(--sage-green), var(--light-sage));
+    height: 100%;
+    border-radius: 6px;
+    transition: width 1s ease-out;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    font-weight: 500;
 }
 
 .demo-buttons {
-    margin-top: 2.5rem;
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
+}
+
+.btn-primary.enhanced,
+.btn-secondary.enhanced {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary.enhanced {
+    background: linear-gradient(135deg, var(--forest-green), var(--sage-green));
+    color: white;
+    border: none;
+    box-shadow: 0 8px 32px rgba(45, 90, 61, 0.3);
+}
+
+.btn-primary.enhanced:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(45, 90, 61, 0.4);
+}
+
+.btn-secondary.enhanced {
+    background: transparent;
+    color: var(--deep-green);
+    border: 2px solid var(--sage-green);
+}
+
+.btn-secondary.enhanced:hover {
+    background: var(--sage-green);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+.btn-arrow {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary.enhanced:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+.demo-sidebar {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    backdrop-filter: blur(8px);
+    height: fit-content;
+}
+
+.vision-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--deep-green);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.practice-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.practice-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.practice-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.practice-content h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--forest-green);
+    margin: 0 0 0.4rem 0;
+}
+
+.practice-content p {
+    font-size: 0.95rem;
+    color: var(--text-medium);
+    line-height: 1.5;
+    margin: 0;
 }
 
 /* Technology Section */
@@ -741,12 +922,45 @@ li strong {
         grid-template-columns: 1fr;
     }
 
+    .demo-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .demo-sidebar {
+        order: -1;
+        margin-bottom: 1rem;
+    }
+
+    .challenge-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .challenge-icon {
+        font-size: 2.5rem;
+    }
+
     .demo-buttons {
         flex-direction: column;
     }
 
-    .demo-buttons .btn-primary,
-    .demo-buttons .btn-secondary {
+    .demo-buttons .btn-primary.enhanced,
+    .demo-buttons .btn-secondary.enhanced {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .practice-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    .practice-content {
         text-align: center;
     }
 }
