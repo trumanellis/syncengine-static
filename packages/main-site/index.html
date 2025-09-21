@@ -434,8 +434,8 @@
             function tick(){
                 ctx.clearRect(0,0,c.width,c.height);
                 const W=c.width, H=c.height;
-                // Links
-                ctx.globalAlpha=.45; ctx.lineWidth=1*devicePixelRatio; ctx.strokeStyle='rgba(163,247,191,.35)';
+                // Links - made more visible
+                ctx.globalAlpha=0.8; ctx.lineWidth=2*devicePixelRatio; ctx.strokeStyle='rgba(45, 90, 61, 0.6)';
                 for(let i=0;i<nodes.length;i++){
                     for(let j=i+1;j<nodes.length;j++){
                         const a=nodes[i], b=nodes[j];
@@ -448,17 +448,17 @@
                         }
                     }
                 }
-                // Nodes
+                // Nodes - made more visible
                 for(const n of nodes){
                     const x=n.x*W, y=n.y*H;
                     // halo
-                    const g=ctx.createRadialGradient(x,y,0,x,y,14*devicePixelRatio);
-                    g.addColorStop(0,'rgba(110,231,214,.55)');
-                    g.addColorStop(1,'rgba(110,231,214,0)');
-                    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,14*devicePixelRatio,0,6.283); ctx.fill();
+                    const g=ctx.createRadialGradient(x,y,0,x,y,16*devicePixelRatio);
+                    g.addColorStop(0,'rgba(27, 67, 50, 0.4)');
+                    g.addColorStop(1,'rgba(27, 67, 50, 0)');
+                    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,16*devicePixelRatio,0,6.283); ctx.fill();
                     // core
-                    ctx.globalAlpha=1; ctx.fillStyle='#ecfff5';
-                    ctx.beginPath(); ctx.arc(x,y,(1.4+n.w)*devicePixelRatio,0,6.283); ctx.fill();
+                    ctx.globalAlpha=1; ctx.fillStyle='#1B4332';
+                    ctx.beginPath(); ctx.arc(x,y,(2+n.w)*devicePixelRatio,0,6.283); ctx.fill();
                     // drift
                     n.x+=n.vx; n.y+=n.vy;
                     if(n.x<0||n.x>1) n.vx*=-1; if(n.y<0||n.y>1) n.vy*=-1;

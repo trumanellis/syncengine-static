@@ -1597,8 +1597,9 @@ canvas {
     padding: 0.45rem 0.65rem;
     font-size: 0.8rem;
     border-radius: 999px;
-    border: 1px solid rgba(236, 253, 245, 0.35);
-    color: #ecfff5;
-    background: rgba(14, 159, 110, 0.15);
+    border: 1px solid var(--deep-green);
+    color: var(--deep-green);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(4px) saturate(120%);
+    font-weight: 500;
 }
