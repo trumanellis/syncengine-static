@@ -1,10 +1,16 @@
 #!/usr/bin/env node
-import { copyFileSync, existsSync, readdirSync } from 'fs';
+import { copyFileSync, existsSync, readdirSync, mkdirSync } from 'fs';
 import { resolve, extname } from 'path';
 
 console.log('Deploying files for GitHub Pages...');
 
-// Copy files from packages/main-site to root
+// Ensure docs directory exists
+const docsDir = 'docs';
+if (!existsSync(docsDir)) {
+  mkdirSync(docsDir, { recursive: true });
+}
+
+// Copy files from packages/main-site to root and docs
 const sourceDir = 'packages/main-site';
 const allFiles = readdirSync(sourceDir);
 
@@ -20,18 +26,25 @@ console.log(`Found ${filesToCopy.length} web files to deploy:`);
 
 filesToCopy.forEach(file => {
   const sourcePath = resolve(sourceDir, file);
-  const destPath = resolve('.', file);
+  const rootDestPath = resolve('.', file);
+  const docsDestPath = resolve(docsDir, file);
 
   if (existsSync(sourcePath)) {
-    copyFileSync(sourcePath, destPath);
+    copyFileSync(sourcePath, rootDestPath);
+    copyFileSync(sourcePath, docsDestPath);
     console.log(`✅ Copied ${file}`);
   } else {
     console.warn(`⚠️  File not found: ${sourcePath}`);
   }
 });
 
-// Copy media files to root
+// Copy media files to root and docs
 const mediaDir = 'media';
+const docsMediaDir = resolve(docsDir, 'media');
+if (!existsSync(docsMediaDir)) {
+  mkdirSync(docsMediaDir, { recursive: true });
+}
+
 if (existsSync(mediaDir)) {
   const mediaFiles = readdirSync(mediaDir);
   const imageFiles = mediaFiles.filter(file => {
@@ -43,10 +56,12 @@ if (existsSync(mediaDir)) {
 
   imageFiles.forEach(file => {
     const sourcePath = resolve(mediaDir, file);
-    const destPath = resolve('.', file);
+    const rootDestPath = resolve('.', file);
+    const docsDestPath = resolve(docsMediaDir, file);
 
     if (existsSync(sourcePath)) {
-      copyFileSync(sourcePath, destPath);
+      copyFileSync(sourcePath, rootDestPath);
+      copyFileSync(sourcePath, docsDestPath);
       console.log(`✅ Copied media/${file}`);
     } else {
       console.warn(`⚠️  Media file not found: ${sourcePath}`);

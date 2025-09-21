@@ -205,8 +205,8 @@ document.addEventListener('DOMContentLoaded', function() {
             animationObserver.observe(el);
         });
 
-        // Observe lazy loading images
-        document.querySelectorAll('img[data-src], img[loading="lazy"]').forEach(img => {
+        // Observe lazy loading images - only those with data-src attribute
+        document.querySelectorAll('img[data-src]').forEach(img => {
             lazyImageObserver.observe(img);
         });
     
