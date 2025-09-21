@@ -572,6 +572,9 @@ li strong {
     padding: 2rem;
     text-align: center;
     transition: var(--transition);
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .overview-card:hover {
