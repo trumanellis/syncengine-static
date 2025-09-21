@@ -1563,12 +1563,10 @@ img {
     }
 }
 
-/* Hero Visual - Graph Animation */
-.hero-visual {
-    margin-top: 2rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+/* Technology Visual - Graph Animation */
+.tech-visual {
+    margin: 2rem auto;
+    max-width: 600px;
 }
 
 .vizcard {
