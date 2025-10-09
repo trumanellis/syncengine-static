@@ -69,9 +69,9 @@ body {
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(250, 247, 240, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: none;
 }
 
 .nav {
