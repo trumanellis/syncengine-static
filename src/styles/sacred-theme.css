@@ -96,8 +96,8 @@ body {
 }
 
 .logo-image {
-    width: 256px;
-    height: 256px;
+    width: 111px;
+    height: 111px;
     object-fit: contain;
     margin-right: 0.5rem;
     transition: transform 0.3s ease, filter 0.3s ease;
