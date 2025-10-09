@@ -21,7 +21,7 @@ function createNavigation() {
 
         navElement.innerHTML = `
             <a href="index.html" class="logo" aria-label="Synchronicity Engine Homepage">
-                <img src="media/Lila Gold.png" alt="Synchronicity Engine - Lila Gold Logo" class="logo-image" width="64" height="64">
+                <img src="media/Lila Gold.png" alt="Synchronicity Engine - Lila Gold Logo" class="logo-image" width="160" height="160">
                 <span class="logo-text">Synchronicity<br>Engine</span>
             </a>
             <ul class="nav-links" role="menubar">
