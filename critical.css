@@ -98,26 +98,47 @@ body {
     position: relative;
 }
 
-.logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--deep-green);
-    text-decoration: none;
+/* New Header Layout: Synchronicity | Logo | Engine */
+.header-layout {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+}
+
+.header-text {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--deep-green);
+    white-space: nowrap;
+}
+
+.logo-center {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
 .logo-image {
     width: 111px;
     height: 111px;
     object-fit: contain;
-    margin-right: 0.5rem;
 }
 
-.logo-text {
-    line-height: 1.2;
+.side-menu-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--deep-green);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .nav-links {

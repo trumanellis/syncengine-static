@@ -20,103 +20,122 @@ function createNavigation() {
         navElement.setAttribute('aria-label', 'Main navigation');
 
         navElement.innerHTML = `
-            <a href="index.html" class="logo" aria-label="Synchronicity Engine Homepage">
-                <img src="media/Lila Gold.png" alt="Synchronicity Engine - Lila Gold Logo" class="logo-image" width="111" height="111">
-                <span class="logo-text">Synchronicity<br>Engine</span>
-            </a>
-            <ul class="nav-links" role="menubar">
-                <li role="none"><a href="index.html" role="menuitem">Home</a></li>
-                <li role="none"><a href="eden-game.html" role="menuitem">Eden Game</a></li>
-                <li role="none"><a href="temples.html" role="menuitem">Temples</a></li>
-                <li role="none"><a href="agua-lila.html" role="menuitem">Água Lila</a></li>
-                <li role="none"><a href="tractor.html" role="menuitem">Support</a></li>
-            </ul>
-            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+            <div class="header-layout">
+                <span class="header-text left">Synchronicity</span>
+                <a href="index.html" class="logo-center" aria-label="Synchronicity Engine Homepage">
+                    <img src="media/Balanced Simple.png" alt="Synchronicity Engine - Balanced Simple Logo" class="logo-image" width="111" height="111">
+                </a>
+                <span class="header-text right">Engine</span>
+            </div>
+            <button class="side-menu-toggle" aria-label="Toggle side menu" aria-expanded="false" aria-controls="side-menu">
                 <span aria-hidden="true">☰</span>
             </button>
         `;
 
         navContainer.appendChild(navElement);
 
+        // Create side menu
+        const sideMenu = document.createElement('div');
+        sideMenu.className = 'side-menu';
+        sideMenu.id = 'side-menu';
+        sideMenu.setAttribute('aria-hidden', 'true');
+        sideMenu.innerHTML = `
+            <div class="side-menu-content">
+                <button class="side-menu-close" aria-label="Close side menu">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <ul class="side-menu-links" role="menubar">
+                    <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+                    <li role="none"><a href="eden-game.html" role="menuitem">Eden Game</a></li>
+                    <li role="none"><a href="temples.html" role="menuitem">Temples</a></li>
+                    <li role="none"><a href="agua-lila.html" role="menuitem">Água Lila</a></li>
+                    <li role="none"><a href="tractor.html" role="menuitem">Support</a></li>
+                </ul>
+            </div>
+            <div class="side-menu-overlay"></div>
+        `;
+
+        navContainer.appendChild(sideMenu);
+
         // Replace the existing nav with our complete structure
         nav.parentNode.replaceChild(navContainer, nav);
 
-    // Set active state based on current page
-    const currentPath = window.location.pathname;
-    const navLinks = navContainer.querySelectorAll('ul.nav-links a');
+        // Set active state based on current page
+        const currentPath = window.location.pathname;
+        const sideMenuLinks = navContainer.querySelectorAll('.side-menu-links a');
 
-    navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
-        if (linkPath === currentPath ||
-            (currentPath === '/' && linkPath === '/') ||
-            (currentPath.includes('tractor') && linkPath.includes('tractor'))) {
-            link.parentElement.classList.add('active');
+        sideMenuLinks.forEach(link => {
+            const linkPath = link.getAttribute('href');
+            if (linkPath === currentPath ||
+                (currentPath === '/' && linkPath === '/') ||
+                (currentPath.includes('tractor') && linkPath.includes('tractor'))) {
+                link.parentElement.classList.add('active');
+            }
+        });
+
+        // Side menu functionality
+        const sideMenuToggle = navContainer.querySelector('.side-menu-toggle');
+        const sideMenuElement = navContainer.querySelector('.side-menu');
+        const sideMenuClose = navContainer.querySelector('.side-menu-close');
+        const sideMenuOverlay = navContainer.querySelector('.side-menu-overlay');
+
+        function openSideMenu() {
+            sideMenuElement.classList.add('active');
+            sideMenuElement.setAttribute('aria-hidden', 'false');
+            sideMenuToggle.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('side-menu-open');
         }
-    });
 
-        // Enhanced mobile menu toggle functionality
-        const mobileToggle = navContainer.querySelector('.mobile-menu-toggle');
-        const navLinksContainer = navContainer.querySelector('.nav-links');
+        function closeSideMenu() {
+            sideMenuElement.classList.remove('active');
+            sideMenuElement.setAttribute('aria-hidden', 'true');
+            sideMenuToggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('side-menu-open');
+        }
 
-        if (mobileToggle && navLinksContainer) {
-            // Set up ARIA attributes
-            navLinksContainer.id = 'mobile-menu';
-
-            mobileToggle.addEventListener('click', function(e) {
+        // Side menu toggle button
+        if (sideMenuToggle) {
+            sideMenuToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-
-                const isOpen = navLinksContainer.classList.contains('mobile-active');
-                navLinksContainer.classList.toggle('mobile-active');
-                mobileToggle.classList.toggle('active');
-
-                // Update ARIA attributes
-                mobileToggle.setAttribute('aria-expanded', (!isOpen).toString());
-
-                // Focus management for accessibility
-                if (!isOpen) {
-                    const firstLink = navLinksContainer.querySelector('a');
-                    firstLink?.focus();
-                }
+                openSideMenu();
             });
 
-            // Enhanced keyboard navigation
-            mobileToggle.addEventListener('keydown', function(e) {
+            sideMenuToggle.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    mobileToggle.click();
+                    openSideMenu();
                 }
             });
-
-            // Close mobile menu when clicking on a link
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinksContainer.classList.remove('mobile-active');
-                    mobileToggle.classList.remove('active');
-                    mobileToggle.setAttribute('aria-expanded', 'false');
-                });
-            });
-
-            // Close mobile menu when clicking outside or pressing Escape
-            document.addEventListener('click', function(event) {
-                if (!navContainer.contains(event.target) && navLinksContainer.classList.contains('mobile-active')) {
-                    closeMobileMenu();
-                }
-            });
-
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && navLinksContainer.classList.contains('mobile-active')) {
-                    closeMobileMenu();
-                    mobileToggle.focus();
-                }
-            });
-
-            function closeMobileMenu() {
-                navLinksContainer.classList.remove('mobile-active');
-                mobileToggle.classList.remove('active');
-                mobileToggle.setAttribute('aria-expanded', 'false');
-            }
         }
+
+        // Side menu close button
+        if (sideMenuClose) {
+            sideMenuClose.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeSideMenu();
+            });
+        }
+
+        // Side menu overlay
+        if (sideMenuOverlay) {
+            sideMenuOverlay.addEventListener('click', closeSideMenu);
+        }
+
+        // Close side menu when clicking on a link
+        sideMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeSideMenu();
+            });
+        });
+
+        // Close side menu with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && sideMenuElement.classList.contains('active')) {
+                closeSideMenu();
+                sideMenuToggle.focus();
+            }
+        });
     } catch (error) {
         console.error('Error creating navigation:', error);
         // Fallback: ensure basic navigation still works

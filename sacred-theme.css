@@ -84,52 +84,151 @@ body {
     position: relative;
 }
 
-.logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--deep-green);
-    text-decoration: none;
+/* New Header Layout: Synchronicity | Logo | Engine */
+.header-layout {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+}
+
+.header-text {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--deep-green);
+    white-space: nowrap;
+}
+
+.logo-center {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
 .logo-image {
     width: 111px;
     height: 111px;
     object-fit: contain;
-    margin-right: 0.5rem;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.logo:hover .logo-image {
+.logo-center:hover .logo-image {
     transform: scale(1.05);
     filter: brightness(1.1);
 }
 
-.logo-text {
-    line-height: 1.2;
+/* Side Menu Toggle Button */
+.side-menu-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--deep-green);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
 }
 
-.nav-links {
-    display: flex;
-    gap: 2rem;
+.side-menu-toggle:hover {
+    background: var(--sage-green);
+}
+
+/* Side Menu Styles */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    transition: right 0.3s ease;
+    z-index: 10000;
+}
+
+.side-menu.active {
+    right: 0;
+}
+
+.side-menu-content {
+    background: var(--bg-primary);
+    height: 100%;
+    padding: 2rem;
+    border-left: 3px solid var(--deep-green);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.side-menu-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-medium);
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+}
+
+.side-menu-close:hover {
+    color: var(--deep-green);
+}
+
+.side-menu-links {
     list-style: none;
-    align-items: center;
+    padding: 0;
+    margin: 3rem 0 0 0;
 }
 
-.nav-links a, .nav-link {
+.side-menu-links li {
+    margin: 0 0 1rem 0;
+}
+
+.side-menu-links a {
+    display: block;
     text-decoration: none;
     color: var(--text-medium);
     font-weight: 500;
-    transition: var(--transition);
-    padding: 0.5rem 0;
-    position: relative;
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
 }
 
-.nav-links a:hover, .nav-link:hover {
+.side-menu-links a:hover {
     color: var(--deep-green);
+    background: var(--sage-green);
+    border-left-color: var(--deep-green);
+}
+
+.side-menu-links li.active a {
+    color: var(--deep-green);
+    background: var(--sage-green);
+    border-left-color: var(--deep-green);
+    font-weight: 600;
+}
+
+.side-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+/* Body class when side menu is open */
+body.side-menu-open {
+    overflow: hidden;
 }
 
 .nav-links a:hover::after, .nav-link:hover::after {
