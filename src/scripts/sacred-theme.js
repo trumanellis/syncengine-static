@@ -20,12 +20,10 @@ function createNavigation() {
         navElement.setAttribute('aria-label', 'Main navigation');
 
         navElement.innerHTML = `
-            <div class="header-layout" style="background-image: url('media/Balanced Simple.png');">
-                <div class="header-content">
-                    <a href="index.html" class="header-link" aria-label="Synchronicity Engine Homepage">
-                        <h1 class="header-title">Synchronicity Engine</h1>
-                    </a>
-                </div>
+            <div class="hero-header">
+                <a href="index.html" class="hero-link" aria-label="Synchronicity Engine Homepage">
+                    <img src="media/Synchronicity Engine.png" alt="Synchronicity Engine" class="hero-image">
+                </a>
             </div>
             <button class="side-menu-toggle" aria-label="Toggle side menu" aria-expanded="false" aria-controls="side-menu">
                 <span aria-hidden="true">☰</span>
