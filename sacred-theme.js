@@ -21,11 +21,12 @@ function createNavigation() {
 
         navElement.innerHTML = `
             <div class="header-layout">
-                <span class="header-text left">Synchronicity</span>
-                <a href="index.html" class="logo-center" aria-label="Synchronicity Engine Homepage">
-                    <img src="media/Balanced Simple.png" alt="Synchronicity Engine - Balanced Simple Logo" class="logo-image" width="111" height="111">
-                </a>
-                <span class="header-text right">Engine</span>
+                <div class="header-content">
+                    <h1 class="header-title">Synchronicity Engine</h1>
+                    <a href="index.html" class="logo-center" aria-label="Synchronicity Engine Homepage">
+                        <img src="media/Balanced Simple.png" alt="Synchronicity Engine - Balanced Simple Logo" class="logo-image" width="111" height="111">
+                    </a>
+                </div>
             </div>
             <button class="side-menu-toggle" aria-label="Toggle side menu" aria-expanded="false" aria-controls="side-menu">
                 <span aria-hidden="true">☰</span>

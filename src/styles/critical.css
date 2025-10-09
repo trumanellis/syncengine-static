@@ -98,21 +98,29 @@ body {
     position: relative;
 }
 
-/* New Header Layout: Synchronicity | Logo | Engine */
+/* New Header Layout: Synchronicity Engine above Logo */
 .header-layout {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 2rem;
+    padding: 1rem 0;
 }
 
-.header-text {
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-title {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
     color: var(--deep-green);
-    white-space: nowrap;
+    margin: 0;
+    text-align: center;
 }
 
 .logo-center {

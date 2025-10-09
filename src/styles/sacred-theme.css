@@ -84,21 +84,29 @@ body {
     position: relative;
 }
 
-/* New Header Layout: Synchronicity | Logo | Engine */
+/* New Header Layout: Synchronicity Engine above Logo */
 .header-layout {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    gap: 2rem;
+    padding: 1rem 0;
 }
 
-.header-text {
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-title {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
     color: var(--deep-green);
-    white-space: nowrap;
+    margin: 0;
+    text-align: center;
 }
 
 .logo-center {
@@ -147,7 +155,6 @@ body {
     right: -100%;
     width: 300px;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.9);
     transition: right 0.3s ease;
     z-index: 10000;
 }
@@ -222,7 +229,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 9999;
 }
 
