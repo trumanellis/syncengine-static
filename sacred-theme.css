@@ -62,59 +62,101 @@ body {
     overflow-x: hidden;
 }
 
-/* Navigation - Updated to match redesign */
+/* Left Sidebar Navigation */
 .nav-container {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
+    bottom: 0;
+    width: 280px;
     z-index: 100;
     background: transparent;
-    backdrop-filter: none;
-    border-bottom: none;
 }
 
-.nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    background: transparent;
-}
-
-.nav-container {
-    background: transparent;
-}
-
-/* Hero Image Header */
-.hero-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.left-sidebar {
     width: 100%;
-    padding: 1rem 0;
-    background: transparent;
+    height: 100%;
+    background: rgba(250, 247, 240, 0.95);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.hero-link {
-    display: block;
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2rem 1rem;
+}
+
+.sidebar-logo {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.logo-link {
+    display: inline-block;
     text-decoration: none;
-    background: transparent;
 }
 
-.hero-image {
+.sidebar-hero-image {
     max-width: 100%;
     height: auto;
-    max-height: 200px;
+    max-height: 120px;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
 
-.hero-link:hover .hero-image {
+.logo-link:hover .sidebar-hero-image {
     transform: scale(1.02);
+}
+
+/* Sidebar Navigation Links */
+.sidebar-nav {
+    flex: 1;
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    margin: 0 0 0.5rem 0;
+}
+
+.sidebar-links a {
+    display: block;
+    text-decoration: none;
+    color: var(--text-medium);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-links a:hover {
+    color: var(--deep-green);
+    background: rgba(212, 175, 55, 0.1);
+    border-left-color: var(--deep-green);
+    transform: translateX(4px);
+}
+
+.sidebar-links li.active a {
+    color: var(--deep-green);
+    background: rgba(212, 175, 55, 0.2);
+    border-left-color: var(--deep-green);
+    font-weight: 600;
+}
+
+/* Adjust main content to accommodate sidebar */
+body {
+    padding-left: 280px;
 }
 
 .logo-image {
