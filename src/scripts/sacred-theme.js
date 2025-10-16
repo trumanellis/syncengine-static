@@ -32,7 +32,6 @@ function createNavigation() {
                 </div>
                 <nav class="sidebar-nav">
                     <ul class="sidebar-links" role="menubar">
-                        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
                         <li role="none"><a href="eden-game.html" role="menuitem">Eden Game</a></li>
                         <li role="none"><a href="temples.html" role="menuitem">Temples</a></li>
                         <li role="none"><a href="agua-lila.html" role="menuitem">Água Lila</a></li>
