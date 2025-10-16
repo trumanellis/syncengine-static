@@ -57,24 +57,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Skip link for accessibility */
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 6px;
-    background: var(--primary-gold);
-    color: var(--deep-green);
-    padding: 8px;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 600;
-    z-index: 1000;
-    transition: top 0.3s ease;
-}
-
-.skip-link:focus {
-    top: 6px;
-}
 
 /* Left Sidebar Navigation - Critical styles */
 .nav-container {
