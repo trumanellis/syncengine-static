@@ -72,6 +72,34 @@ if (existsSync('src/media')) {
     console.warn('⚠️  No src/media directory found');
 }
 
+// Copy components directory
+console.log('\n⚙️  Copying component files...');
+if (existsSync('src/components')) {
+    if (existsSync('components')) {
+        rmSync('components', { recursive: true, force: true });
+    }
+
+    const { execSync } = await import('child_process');
+    execSync('cp -r src/components components');
+    console.log('✅ Components directory copied');
+} else {
+    console.warn('⚠️  No src/components directory found');
+}
+
+// Copy markdown directory
+console.log('\n📚 Copying markdown files...');
+if (existsSync('src/markdown')) {
+    if (existsSync('markdown')) {
+        rmSync('markdown', { recursive: true, force: true });
+    }
+
+    const { execSync } = await import('child_process');
+    execSync('cp -r src/markdown markdown');
+    console.log('✅ Markdown directory copied');
+} else {
+    console.warn('⚠️  No src/markdown directory found');
+}
+
 // Validation checks
 console.log('\n🔍 Running validations...');
 

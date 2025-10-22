@@ -1,6 +1,9 @@
 /* Critical CSS for above-the-fold content - Synchronicity Engine */
 /* This should be inlined in <head> for optimal performance */
 
+/* Font loading */
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700;800&display=swap');
+
 :root {
     /* Essential color palette */
     --primary-gold: #D4AF37;
@@ -23,8 +26,8 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Typography */
-    --font-heading: 'Crimson Pro', serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-heading: 'Exo', sans-serif;
+    --font-body: 'Exo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Dark section adjustments */

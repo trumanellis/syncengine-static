@@ -42,14 +42,11 @@
     </script>
 
     <!-- Performance optimizations -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Critical CSS should be inlined in production -->
     <!-- <link rel="preload" href="critical.css" as="style"> -->
 
     <!-- Optimized font loading with display swap -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
     <!-- Main stylesheet -->
     <link rel="stylesheet" href="sacred-theme.css">
@@ -69,20 +66,32 @@
     <main id="main-content">
         <section class="hero" id="home" role="banner">
             <div class="hero-container">
-                <div class="hero-image animate-cascade">
-                    <img src="media/Sync is.png" alt="Sync is" class="homepage-hero-image">
-                </div>
-
                 <div class="hero-badge animate-cascade">Attention → Blessing → Token → Gratitude</div>
 
                 <h1 class="animate-cascade">Attention is Sacred</h1>
 
+                <div class="hero-image animate-cascade">
+                    <img src="media/Glowing Eye.png" alt="Glowing Eye" class="homepage-hero-image">
+                </div>
+
                 <p class="hero-subtitle animate-cascade">
-                    The sap of life that sustains consciousness in physical form. Every click, every gaze, every breath of presence carries value.
+                    Individuals create intentions and post them to their community.
                 </p>
 
                 <p class="hero-description animate-cascade">
-                    <em>This is our axiom:</em> We build technology that honors presence. Your attention becomes a blessing, blessings fuse into tokens, tokens flow through a sacred gifting economy to fund regeneration.
+                    Each member individually picks one intention at a time to focus their attention on. Collective attention from many people accumulates on intentions until someone takes action to manifest that intention.
+                </p>
+
+                <p class="hero-description animate-cascade">
+                    The doer posts a Proof of Service to the subset of the community who have expressed interest in that intention, each of whom receive a notification. If satisfied, they may release their stored attention to the account of the doer in the form of a Token of Gratitude worth however many hours.
+                </p>
+
+                <p class="hero-description animate-cascade">
+                    The doer may then place that Token of Gratitude as an added incentive to any intention of their choosing, thus encouraging faster manifestation of their own priorities.
+                </p>
+
+                <p class="hero-description animate-cascade">
+                    Alternatively, members may donate their own services to the community in exchange for Tokens of Gratitude. Thus by helping others, you accumulate potential energy to push forward your own dreams.
                 </p>
 
             </div>
@@ -382,6 +391,22 @@
         </div>
     </section>
 
+    <!-- Markdown Cards Section -->
+    <section class="markdown-section" id="knowledge">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">📚 Sacred Knowledge</div>
+                <h2 class="section-title">Wisdom & Guidance</h2>
+                <p class="section-description">
+                    Explore our collection of insights, teachings, and practical guidance for living in sacred relationship with technology and Earth.
+                </p>
+            </div>
+            <div class="markdown-container" id="markdown-content">
+                <!-- Markdown cards will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -393,6 +418,7 @@
     </footer>
 
     <script type="module" src="sacred-theme.js"></script>
+    <script src="components/markdown-renderer.js"></script>
     <script>
         // Graph animation from docs - node network visualization
         const c = document.getElementById('nodefield');
